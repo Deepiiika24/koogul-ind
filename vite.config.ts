@@ -1,5 +1,6 @@
-import { defineConfig } from "vitest/config"
-import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { configDefaults } from "vitest/config";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -7,10 +8,13 @@ export default defineConfig({
   server: {
     open: true,
   },
+  build: {
+    outDir: "dist", // Ensure the build output is placed in "dist"
+  },
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: "src/setupTests",
-    mockReset: true,
+    setupFiles: "./src/setupTests.ts", // Ensure this file exists
+    exclude: [...configDefaults.exclude, "dist/**"], // Exclude dist folder from tests
   },
-})
+});
