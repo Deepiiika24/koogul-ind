@@ -40,7 +40,7 @@ const App = () => (
           path="/"
           element={(
             <>
-              <Head title="Home | Fruitables - Vegetable Website Template " />
+              <Head title="Home | Koogul Industries " />
               <Home />
             </>
           )}
@@ -49,7 +49,7 @@ const App = () => (
           path="/products"
           element={(
             <>
-              <Head title="Products | Fruitables - Vegetable Website Template" />
+              <Head title="Products | Koogul Industries" />
               <Products />
             </>
           )}
@@ -58,7 +58,7 @@ const App = () => (
           path="/product/:id"
           element={(
             <>
-              <Head title="Product Detail| Fruitables - Vegetable Website Template" />
+              <Head title="Product Detail| Koogul Industries" />
               <ProductDetail />
             </>
           )}
@@ -67,7 +67,7 @@ const App = () => (
           path="/shop"
           element={(
             <>
-              <Head title="Shop | Fruitables - Vegetable Website Template" />
+              <Head title="Shop | Koogul Industries" />
               <Shop />
             </>
           )}
@@ -76,7 +76,7 @@ const App = () => (
         // path="/shop-detail"
         // element={(
         //   <>
-        //     <Head title="Shop Detail| Fruitables - Vegetable Website Template" />
+        //     <Head title="Shop Detail| Koogul Industries" />
         //     <ShopDetail />
         //   </>
         // )}
@@ -85,7 +85,7 @@ const App = () => (
           path="/contact"
           element={(
             <>
-              <Head title="Contact| Fruitables - Vegetable Website Template" />
+              <Head title="Contact| Koogul Industries" />
               <Contact />
             </>
           )}
@@ -95,7 +95,7 @@ const App = () => (
           path="/Rice"
           element={(
             <>
-              <Head title="Rice| Fruitables - Vegetable Website Template" />
+              <Head title="Rice| Koogul Industries" />
               <Cart />
             </>
           )}
@@ -113,7 +113,7 @@ const App = () => (
           path="/spices"
           element={(
             <>
-              <Head title="Spices| Fruitables - Vegetable Website Template" />
+              <Head title="Spices| Koogul Industries" />
               <Spices />
             </>
           )}
@@ -122,7 +122,7 @@ const App = () => (
           path="/snacks"
           element={(
             <>
-              <Head title="snacks| Fruitables - Vegetable Website Template" />
+              <Head title="snacks| Koogul Industries" />
               <Snacks />
             </>
           )}
@@ -131,7 +131,7 @@ const App = () => (
           path="/Flour"
           element={(
             <>
-              <Head title="Flour| Fruitables - Vegetable Website Template" />
+              <Head title="Flour| Koogul Industries" />
               <Flour />
             </>
           )}
@@ -140,7 +140,7 @@ const App = () => (
           path="/Pooja"
           element={(
             <>
-              <Head title="Pooja | Fruitables - Vegetable Website Template" />
+              <Head title="Pooja | Koogul Industries" />
               <Pooja />
             </>
           )}
@@ -212,7 +212,7 @@ const App = () => (
           path=":id"
           element={(
             <>
-              <Head title="Shop | Fruitables - Vegetable Website Template" />
+              <Head title="Shop | Koogul Industries" />
               <Shop />
             </>
           )}
