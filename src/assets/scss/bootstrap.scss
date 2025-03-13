@@ -1,0 +1,112 @@
+/******* Customized Bootstrap ********/
+
+$primary: #D21215;
+$secondary: #0c8903;
+$light: #F4F6F8;
+$dark: #2E2E2E;
+
+$font-family-base: 'Open Sans', sans-serif;
+
+$headings-font-family: 'Raleway', sans-serif;
+
+$body-color: #747d88;
+
+$headings-color: $dark;
+
+$headings-font-weight: 600;
+
+$display-font-weight: 800;
+
+$enable-responsive-font-sizes: true;
+
+$border-radius: 10px;
+
+$border-radius-sm: $border-radius;
+
+$border-radius-lg: $border-radius;
+
+$link-decoration: none;
+
+$enable-negative-margins: true;
+@import "bootstrap/scss/bootstrap";
+
+#flight-bg, #faq-section {
+    --bs-gutter-x: -1.rem !important;
+}
+
+.carousel-control-prev {
+    margin-left: -44px !important;
+}
+
+.carousel-control-next {
+    margin-right: -44px !important;
+}
+
+.carousel-item a {
+    position: unset !important;
+    transform: none !important;
+    font-size: 20px !important;
+    background: none !important;
+}
+
+@media (max-width:1024px) {
+    #columns {
+        width: 33% !important;
+    }
+}
+
+// about
+// .row {
+//     --bs-gutter-x: -1.rem !important;
+// }
+
+@media (max-width:768px) {
+    .px-5 {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    #services {
+        display: flex;
+        margin: 0 auto;
+    }
+
+    img#services {
+        width: 250px;
+    }
+
+    #row {
+        flex-direction: column-reverse !important;
+    }
+
+    #branch-col {
+        display: flex !important;
+    }
+
+    #flight-bg {
+        padding: 0px !important;
+    }
+
+    #textCenter {
+        text-align: center !important;
+    }
+    #columns {
+        width: 50% !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width:425px) {
+    #columns {
+        width: 100% !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+
+
+@import "bootstrap/scss/bootstrap";
