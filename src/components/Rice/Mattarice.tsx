@@ -38,11 +38,7 @@ const Mattarice: React.FC = () => {
     return (
         <>
             <Header />
-            <Container className="py-5"
-                style={{
-                    marginTop: "152px"
-                }}
-            >
+            <Container className="py-5">
                 <Row className="align-items-center justify-content-center rice-header">
                     {/* Product Image */}
                     <Col xs={12} md={6} className="mb-4 mb-md-0" data-aos="zoom-out-up">

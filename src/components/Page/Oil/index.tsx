@@ -13,21 +13,23 @@ import leaf5 from '../../../assets/images/oil/yellu.png'
 import leaf6 from '../../../assets/images/oil/coconut.png'
 import leaf7 from '../../../assets/images/oil/mustard.png'
 import oil from '../../../assets/images/oil/oil-banner.jpg'
+import { Link } from 'react-router-dom';
 
 interface LeafItem {
   id: number;
   name: string;
   image: string;
+  path: string;
 }
 
 const leafData: LeafItem[] = [
-  { id: 1, name: "Peanut Oil", image: leaf1 },
-  { id: 2, name: "Ghee", image: leaf2 },
-  { id: 3, name: "Palm oil", image: leaf3 },
-  { id: 4, name: "Sun flower Oil", image: leaf4 },
-  { id: 5, name: "Sesame Oil", image: leaf5 },
-  { id: 6, name: "Coconut Oil", image: leaf6 },
-  { id: 7, name: "Mustard Oil", image: leaf7 },
+  { id: 1, name: "Peanut Oil", image: leaf1, path: "/Oil/Peanut-oil" },
+  { id: 2, name: "Ghee", image: leaf2, path: "/Oil/Ghee" },
+  { id: 3, name: "Palm oil", image: leaf3, path: "/Oil/Palm-oil" },
+  { id: 4, name: "Sun flower Oil", image: leaf4, path: "/Oil/Sunflower-oil" },
+  { id: 5, name: "Sesame Oil", image: leaf5, path: "/Oil/Sesame-oil" },
+  { id: 6, name: "Coconut Oil", image: leaf6, path: "/Oil/Coconut-oil" },
+  { id: 7, name: "Mustard Oil", image: leaf7, path: "/Oil/Mustard-oil" },
 ];
 
 const Oil: React.FC = () => {
@@ -72,14 +74,14 @@ const Oil: React.FC = () => {
         <div data-aos="fade-up">
           <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
             <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-            OIL EXPORTER FROM INDIA
+              OIL EXPORTER FROM INDIA
             </h1>
           </div>
         </div>
         <div data-aos="fade-up">
           <div className="container-fluid">
             <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
-            Cooking oil is a versatile kitchen staple used for frying, sautéing, roasting, baking, and as a base for dressings and marinades. It enhances the flavor and texture of food while providing essential fats needed for a balanced diet. Different types of cooking oils, such as olive, sunflower, coconut, and canola oil, have unique properties, including varying smoke points and health benefits, making them suitable for different cooking methods. Additionally, cooking oils are also used in food preservation, as they help to extend shelf life and maintain moisture in various dishes.</p>
+              Cooking oil is a versatile kitchen staple used for frying, sautéing, roasting, baking, and as a base for dressings and marinades. It enhances the flavor and texture of food while providing essential fats needed for a balanced diet. Different types of cooking oils, such as olive, sunflower, coconut, and canola oil, have unique properties, including varying smoke points and health benefits, making them suitable for different cooking methods. Additionally, cooking oils are also used in food preservation, as they help to extend shelf life and maintain moisture in various dishes.</p>
           </div>
         </div>
         <div data-aos="fade-up">
@@ -123,8 +125,10 @@ const Oil: React.FC = () => {
                     </div>
                     <div className="p-4 border  border-top-0 rounded-bottom text-center">
                       <h5 className="mt-3 text-center">
-                        <a href="/" className="text-decoration-none text-dark">
-                          {data.name}
+                        <a className="text-decoration-none text-dark">
+                          <Link to={data.path}>
+                            {data.name}
+                          </Link>
                         </a>
                       </h5>
                     </div>

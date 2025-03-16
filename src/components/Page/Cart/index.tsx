@@ -101,7 +101,7 @@ const Rice = () => {
                                             <h4 className="mt-3 text-center">
                                                 <a href="/" className="text-decoration-none text-dark">
                                                     <Link to="/Rice/Matta-rice">
-                                                    Matta Rice
+                                                        Matta Rice
                                                     </Link>
                                                 </a></h4>
                                         </div>
@@ -145,7 +145,9 @@ const Rice = () => {
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h4 className="mt-3 text-center">
                                                 <a href="/" className="text-decoration-none text-dark">
-                                                    Basmati Rice
+                                                    <Link to="/Rice/Basmati-Rice">
+                                                        Basmati Rice
+                                                    </Link>
                                                 </a></h4>
                                         </div>
                                     </div>
@@ -187,7 +189,9 @@ const Rice = () => {
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h4 className="mt-3 text-center">
                                                 <a href="/" className="text-decoration-none text-dark">
-                                                    Boiled Rice
+                                                    <Link to="/Rice/Boiled-Rice">
+                                                        Boiled Rice
+                                                    </Link>
                                                 </a></h4>
                                         </div>
                                     </div>
@@ -229,7 +233,9 @@ const Rice = () => {
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h4 className="mt-3 text-center">
                                                 <a href="/" className="text-decoration-none text-dark">
-                                                    Idly Rice
+                                                    <Link to="/Rice/Idly-Rice">
+                                                        Idly Rice
+                                                    </Link>
                                                 </a></h4>
                                         </div>
                                     </div>
@@ -271,7 +277,9 @@ const Rice = () => {
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h4 className="mt-3 text-center">
                                                 <a href="/" className="text-decoration-none text-dark">
-                                                    Red Raw Rice
+                                                    <Link to="/Rice/Red-Rice">
+                                                        Red Raw Rice
+                                                    </Link>
                                                 </a></h4>
                                         </div>
                                     </div>
@@ -313,7 +321,9 @@ const Rice = () => {
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h4 className="mt-3 text-center">
                                                 <a href="/" className="text-decoration-none text-dark">
-                                                    Seeraga Samba
+                                                    <Link to="/Rice/Seeragasamba-Rice">
+                                                        Seeraga Samba
+                                                    </Link>
                                                 </a></h4>
                                         </div>
                                     </div>
@@ -355,13 +365,13 @@ const Rice = () => {
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h4 className="mt-3 text-center">
                                                 <a href="/" className="text-decoration-none text-dark">
-                                                    White Raw Rice
+                                                    <Link to="/Rice/White-Rice">
+                                                        White Raw Rice
+                                                    </Link>
                                                 </a></h4>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>

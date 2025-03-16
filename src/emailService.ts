@@ -9,10 +9,10 @@ const sendEmail = async (form: HTMLFormElement) => {
         formData.append("user_email", formData.get("user_email") as string);
 
         const result = await emailjs.sendForm(
-            'service_7s5d5i8', // Replace with your EmailJS Service ID
-            'template_ptiscag', // Replace with your EmailJS Template ID
+            'service_b6vs85n', // Replace with your EmailJS Service ID
+            'template_724f4op', // Replace with your EmailJS Template ID
             form,
-            'MDefw_dKaSKYzSMI4' // Replace with your EmailJS Public Key
+            'UhQRuAMF-7wCGFRYW' // Replace with your EmailJS Public Key
         );
 
         console.log('Email sent successfully:', result.text);

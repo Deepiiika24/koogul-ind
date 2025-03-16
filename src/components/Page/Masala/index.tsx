@@ -11,20 +11,22 @@ import Masala3 from '../../../assets/images/Masala/Sambar_Masala.png'
 import Masala4 from '../../../assets/images/Masala/Rasam_Masala.png'
 import Masala5 from '../../../assets/images/Masala/Pulikulambu_Masala.png'
 import Masala6 from '../../../assets/images/Masala/Meat_Curry_Masala.png'
+import { Link } from 'react-router-dom';
 
 interface MasalaItem {
     id: number;
     name: string;
     image: string;
+    path: string;
 }
 
 const masalaData: MasalaItem[] = [
-    { id: 1, name: "Garam Masala", image: Masala1 },
-    { id: 2, name: "Curry Masala", image: Masala2 },
-    { id: 3, name: "Sambar Masala", image: Masala3 },
-    { id: 4, name: "Rasam Masala", image: Masala4 },
-    { id: 5, name: "PuliKulambu Masala", image: Masala5 },
-    { id: 6, name: "Meat Curry Masala", image: Masala6 }
+    { id: 1, name: "Garam Masala", image: Masala1, path: "/masala/garam-masala" },
+    { id: 2, name: "Curry Masala", image: Masala2, path: "/masala/curry-masala" },
+    { id: 3, name: "Sambar Masala", image: Masala3, path: "/masala/sambar-masala" },
+    { id: 4, name: "Rasam Masala", image: Masala4, path: "/masala/rasam-masala" },
+    { id: 5, name: "PuliKulambu Masala", image: Masala5, path: "/masala/pulikulambu-masala" },
+    { id: 6, name: "Meat Curry Masala", image: Masala6, path: "/masala/meat-curry-masala" }
 ];
 
 const Masala: React.FC = () => {
@@ -120,8 +122,10 @@ const Masala: React.FC = () => {
                                         </div>
                                         <div className="pt-4 pb-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h5 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    {data.name}
+                                                <a className="text-decoration-none text-dark">
+                                                    <Link to={data.path}>
+                                                        {data.name}
+                                                    </Link>
                                                 </a>
                                             </h5>
                                         </div>

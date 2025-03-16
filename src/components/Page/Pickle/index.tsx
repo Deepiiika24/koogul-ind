@@ -17,26 +17,28 @@ import pickle9 from '../../../assets/images/Pickles/Mahani-Pickle.jpg'
 import pickle10 from '../../../assets/images/Pickles/Vadu-Maangai-Pickle.jpg'
 import pickle11 from '../../../assets/images/Pickles/Amla-Pickle.jpg'
 import pickle12 from '../../../assets/images/Pickles/Lime-Pickle.jpg'
+import { Link } from 'react-router-dom';
 
 interface PickleItem {
     id: number;
     name: string;
     image: string;
+    path: string;
 }
 
 const pickleData: PickleItem[] = [
-    { id: 1, name: "Garlic Pickle", image: pickle1 },
-    { id: 2, name: "Green Chilli Pickle", image: pickle2 },
-    { id: 3, name: "Tomato Pickle", image: pickle3 },
-    { id: 4, name: "Mango Pickle", image: pickle4 },
-    { id: 5, name: "Brinjal Pickle", image: pickle5 },
-    { id: 6, name: "Curry Pickle", image: pickle6 },
-    { id: 7, name: "Coriander Pickle", image: pickle7 },
-    { id: 8, name: "Ginger Pickle", image: pickle8 },
-    { id: 9, name: "Mahani Pickle", image: pickle9 },
-    { id: 10, name: "Vadu Maangai", image: pickle10 },
-    { id: 11, name: "Amla Pickle", image: pickle11 },
-    { id: 12, name: "Lime Pickle", image: pickle12 },
+    { id: 1, name: "Garlic Pickle", image: pickle1, path: "/pickle/garlic-pickle" },
+    { id: 2, name: "Green Chilli Pickle", image: pickle2, path: "/pickle/green-chilli-pickle" },
+    { id: 3, name: "Tomato Pickle", image: pickle3, path: "/pickle/tomato-pickle" },
+    { id: 4, name: "Mango Pickle", image: pickle4, path: "/pickle/mango-pickle" },
+    { id: 5, name: "Brinjal Pickle", image: pickle5, path: "/pickle/brinjal-pickle" },
+    { id: 6, name: "Curry Pickle", image: pickle6, path: "/pickle/curry-pickle" },
+    { id: 7, name: "Coriander Pickle", image: pickle7, path: "/pickle/coriander-pickle" },
+    { id: 8, name: "Ginger Pickle", image: pickle8, path: "/pickle/ginger-pickle" },
+    { id: 9, name: "Mahani Pickle", image: pickle9, path: "/pickle/mahani-pickle" },
+    { id: 10, name: "Vadu Maangai", image: pickle10, path: "/pickle/vadu-maangai" },
+    { id: 11, name: "Amla Pickle", image: pickle11, path: "/pickle/amla-pickle" },
+    { id: 12, name: "Lime Pickle", image: pickle12, path: "/pickle/lime-pickle" },
 ];
 
 const Pickle: React.FC = () => {
@@ -132,8 +134,10 @@ const Pickle: React.FC = () => {
                                         </div>
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h5 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    {data.name}
+                                                <a className="text-decoration-none text-dark">
+                                                    <Link to={data.path}>
+                                                        {data.name}
+                                                    </Link>
                                                 </a>
                                             </h5>
                                         </div>

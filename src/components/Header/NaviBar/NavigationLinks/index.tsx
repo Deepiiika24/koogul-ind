@@ -10,23 +10,12 @@ const NavigationLinks: React.FC<{ activeLink: string }> = ({ activeLink }) => {
       <Nav.Link onClick={() => navigate("/")} active={activeLink === ""}>
         Home
       </Nav.Link>
-      <Nav.Link onClick={() => navigate("/products")} active={activeLink === "products"}>
+      <Nav.Link onClick={() => navigate("/about-us")} active={activeLink === "about-us"}>
         About Us
       </Nav.Link>
-      {/* <Nav.Link onClick={() => navigate("/products")} active={activeLink === "products"}>
-        Certificates
-      </Nav.Link> */}
-      {/* <Nav.Link
-        active={activeLink.startsWith("product") && activeLink !== "products"}
-      >
-        Product Detail
-      </Nav.Link> */}
-      <Nav.Link onClick={() => navigate("/shop")} active={activeLink === "shop"}>
+      <Nav.Link onClick={() => navigate("/certificates")} active={activeLink === "certificates"}>
         Certificates
       </Nav.Link>
-      {/* <Nav.Link onClick={() => navigate("/shop-detail")} active={activeLink === "shop-detail"}>
-        Shop Detail
-      </Nav.Link> */}
       <NavDropdown title="Product" id="basic-nav-dropdown">
         <NavDropdown.Item onClick={() => navigate("/Rice")}>
           Rice
@@ -38,35 +27,35 @@ const NavigationLinks: React.FC<{ activeLink: string }> = ({ activeLink }) => {
           Snacks
         </NavDropdown.Item>
         <NavDropdown.Item onClick={() => navigate("/Flour")}>
-        Flour
+          Flour
         </NavDropdown.Item>
         <NavDropdown.Item onClick={() => navigate("/pooja")}>
           Pooja Product
         </NavDropdown.Item>
-        
+
         <NavDropdown.Item onClick={() => navigate("/Flower")}>
-         Flower
+          Flower
         </NavDropdown.Item>
         <NavDropdown.Item onClick={() => navigate("/Leaf")}>
-         Leaf
+          Leaf
         </NavDropdown.Item>
-        <NavDropdown.Item onClick={() => navigate("/Vegetable")}>
-         Vegetables
+        <NavDropdown.Item onClick={() => navigate("/Vegetables")}>
+          Vegetables
         </NavDropdown.Item>
         <NavDropdown.Item onClick={() => navigate("/Pickle")}>
-         Pickle
+          Pickle
         </NavDropdown.Item>
         <NavDropdown.Item onClick={() => navigate("/Oil")}>
-         Oil
+          Oil
         </NavDropdown.Item>
         <NavDropdown.Item onClick={() => navigate("/Beeda")}>
-         Paan Beeda
+          Paan Beeda
         </NavDropdown.Item>
         <NavDropdown.Item onClick={() => navigate("/Masala")}>
-         Masala
+          Masala
         </NavDropdown.Item>
       </NavDropdown>
-      <Nav.Link onClick={() => navigate("/contact")} active={activeLink === "contact"}>
+      <Nav.Link onClick={() => navigate("/contact-us")} active={activeLink === "contact-us"}>
         Contact Us
       </Nav.Link>
     </Nav>

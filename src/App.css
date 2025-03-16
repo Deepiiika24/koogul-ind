@@ -6,7 +6,9 @@
     transition: opacity .8s ease-out, visibility 0s linear .5s;
     z-index: 99999;
 }
-
+a{
+color: rgba(11, 11, 11, 0.918);
+}
 #spinner.show {
     transition: opacity .8s ease-out, visibility 0s linear .0s;
     visibility: visible;
@@ -259,14 +261,14 @@
 
 @media (min-width: 992px) {
     .hero-header,
-    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner {
+    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header {
         margin-top: 152px !important;
     }
 }
 
 @media (max-width: 992px) {
     .hero-header,
-    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner {
+    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header {
         margin-top: 97px !important;
     }
 }
@@ -604,4 +606,12 @@
 }
 
 /*** Footer End ***/
-
+/* table */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-color-type: var(--bs-table-striped-color);
+    --bs-table-bg-type: rgb(234 93 93 / 5%);
+}
+.table-striped:hover > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-color-type: var(--bs-table-striped-color);
+    --bs-table-bg-type: rgb(234 93 93 / 5%);
+}

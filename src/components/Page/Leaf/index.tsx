@@ -19,28 +19,30 @@ import leaf11 from '../../../assets/images/Leaf/Guava-leaf.jpg'
 import leaf12 from '../../../assets/images/Leaf/Fig-leaf.jpg'
 import leaf13 from '../../../assets/images/Leaf/Moringa-leaf.jpg'
 import leaf14 from '../../../assets/images/Leaf/Toran-leaf.jpg'
+import { Link } from 'react-router-dom';
 
 interface LeafItem {
   id: number;
   name: string;
   image: string;
+  path: string;
 }
 
 const leafData: LeafItem[] = [
-  { id: 1, name: "Banana Leaves", image: leaf1 },
-  { id: 2, name: "Neem Leaves", image: leaf2 },
-  { id: 3, name: "Ashoka Leaves", image: leaf3 },
-  { id: 4, name: "Mango Leaves", image: leaf4 },
-  { id: 5, name: "Betel Leaves", image: leaf5 },
-  { id: 6, name: "Teak Leaves", image: leaf6 },
-  { id: 7, name: "Eucalyptus Leaves", image: leaf7 },
-  { id: 8, name: "Palm Leaves", image: leaf8 },
-  { id: 9, name: "Tulsi Leaves", image: leaf9 },
-  { id: 10, name: "Bamboo Leaves", image: leaf10 },
-  { id: 11, name: "Guava Leaves", image: leaf11 },
-  { id: 12, name: "Fig Leaves", image: leaf12 },
-  { id: 13, name: "Moringa Leaves", image: leaf13 },
-  { id: 14, name: "Toran", image: leaf14 }
+  { id: 1, name: "Banana Leaves", image: leaf1, path: "/Leaf/banana-leaf" },
+  { id: 2, name: "Neem Leaves", image: leaf2, path: "/Leaf/neem-leaf" },
+  { id: 3, name: "Ashoka Leaves", image: leaf3, path: "/Leaf/ashoka-leaf" },
+  { id: 4, name: "Mango Leaves", image: leaf4, path: "/Leaf/mango-leaf" },
+  { id: 5, name: "Betel Leaves", image: leaf5, path: "/Leaf/betel-leaf" },
+  { id: 6, name: "Teak Leaves", image: leaf6, path: "/Leaf/teak-leaf" },
+  { id: 7, name: "Eucalyptus Leaves", image: leaf7, path: "/Leaf/eucalyptus-leaf" },
+  { id: 8, name: "Palm Leaves", image: leaf8, path: "/Leaf/palm-leaf" },
+  { id: 9, name: "Tulsi Leaves", image: leaf9, path: "/Leaf/tulsi-leaf" },
+  { id: 10, name: "Bamboo Leaves", image: leaf10, path: "/Leaf/bamboo-leaf" },
+  { id: 11, name: "Guava Leaves", image: leaf11, path: "/Leaf/guava-leaf" },
+  { id: 12, name: "Fig Leaves", image: leaf12, path: "/Leaf/fig-leaf" },
+  { id: 13, name: "Moringa Leaves", image: leaf13, path: "/Leaf/moringa-leaf" },
+  { id: 14, name: "Toran", image: leaf14, path: "/Leaf/toran" }
 ];
 
 const Leaf: React.FC = () => {
@@ -137,7 +139,9 @@ const Leaf: React.FC = () => {
                     <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                       <h5 className="mt-3 text-center">
                         <a href="/" className="text-decoration-none text-dark">
-                          {data.name}
+                          <Link to={data.path}>
+                            {data.name}
+                          </Link>
                         </a>
                       </h5>
                     </div>

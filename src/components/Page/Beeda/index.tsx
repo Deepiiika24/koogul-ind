@@ -13,22 +13,24 @@ import Beeda5 from '../../../assets/images/Beeda/dry-clove.jpg'
 import Beeda6 from '../../../assets/images/Beeda/chutni.jpg'
 import Beeda7 from '../../../assets/images/Beeda/cardamom.jpg'
 import Beeda8 from '../../../assets/images/Beeda/battikatha.jpg'
+import { Link } from 'react-router-dom';
 
 interface BeedaItem {
     id: number;
     name: string;
     image: string;
+    path: string;
 }
 
 const beedaItem: BeedaItem[] = [
-    { id: 1, name: "Shredded Coconut", image: Beeda1 },
-    { id: 2, name: "Sweet Jeera Mittai", image: Beeda2 },
-    { id: 3, name: "Rose Gulkand", image: Beeda3 },
-    { id: 4, name: "Dry Tutti Frutti", image: Beeda4 },
-    { id: 5, name: "Dry Clove", image: Beeda5 },
-    { id: 6, name: "Sweet Pan Chutni", image: Beeda6 },
-    { id: 6, name: "Cardamom Seeds", image: Beeda7 },
-    { id: 6, name: "Kanpuri Biscuit", image: Beeda8 }
+    { id: 1, name: "Shredded Coconut", image: Beeda1, path: "/beeda/shredded-coconut" },
+    { id: 2, name: "Sweet Jeera Mittai", image: Beeda2, path: "/beeda/sweet-jeera-mittai" },
+    { id: 3, name: "Rose Gulkand", image: Beeda3, path: "/beeda/rose-gulkand" },
+    { id: 4, name: "Dry Tutti Frutti", image: Beeda4, path: "/beeda/dry-tutti-frutti" },
+    { id: 5, name: "Dry Clove", image: Beeda5, path: "/beeda/dry-clove" },
+    { id: 6, name: "Sweet Pan Chutni", image: Beeda6, path: "/beeda/sweet-pan-chutni" },
+    { id: 6, name: "Cardamom Seeds", image: Beeda7, path: "/beeda/cardamon-seeds" },
+    { id: 6, name: "Kanpuri Biscuit", image: Beeda8, path: "/beeda/kanpuri-biscuit" }
 ];
 
 const Beeda: React.FC = () => {
@@ -124,8 +126,10 @@ const Beeda: React.FC = () => {
                                         </div>
                                         <div className="pt-4 pb-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h5 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    {data.name}
+                                                <a className="text-decoration-none text-dark">
+                                                    <Link to={data.path}>
+                                                        {data.name}
+                                                    </Link>
                                                 </a>
                                             </h5>
                                         </div>

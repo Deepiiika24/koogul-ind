@@ -95,6 +95,10 @@ $enable-negative-margins: true;
         display: flex;
         justify-content: center;
     }
+    .fw-bold {
+        font-weight: 700 !important;
+        padding: 43px 0px 0px 0px;
+    }
 }
 
 @media (max-width:425px) {
@@ -102,6 +106,10 @@ $enable-negative-margins: true;
         width: 100% !important;
         display: flex;
         justify-content: center;
+    }
+    .fw-bold {
+        font-weight: 700 !important;
+        padding: 43px 0px 0px 0px;
     }
 }
 

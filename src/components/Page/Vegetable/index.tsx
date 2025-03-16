@@ -17,26 +17,28 @@ import vegetable9 from '../../../assets/images/Vegetable/Mushroom.jpg'
 import vegetable10 from '../../../assets/images/Vegetable/Onion.jpg'
 import vegetable11 from '../../../assets/images/Vegetable/Potato.jpg'
 import vegetable12 from '../../../assets/images/Vegetable/Spinach.jpg'
+import { Link } from 'react-router-dom';
 
 interface VegetableItem {
     id: number;
     name: string;
     image: string;
+    path: string;
 }
 
 const vegetableData: VegetableItem[] = [
-    { id: 1, name: "Bottle Gourd", image: vegetable1 },
-    { id: 2, name: "Brinjal", image: vegetable2 },
-    { id: 3, name: "Broccolie", image: vegetable3 },
-    { id: 4, name: "Cabbage", image: vegetable4 },
-    { id: 5, name: "Cauliflower", image: vegetable5 },
-    { id: 6, name: "Drum stick", image: vegetable6 },
-    { id: 7, name: "Green chilli", image: vegetable7 },
-    { id: 8, name: "Lady finger", image: vegetable8 },
-    { id: 9, name: "Mushroom", image: vegetable9 },
-    { id: 10, name: "Onion", image: vegetable10 },
-    { id: 11, name: "Potato", image: vegetable11 },
-    { id: 12, name: "Spinach", image: vegetable12 },
+    { id: 1, name: "Bottle Gourd", image: vegetable1, path: "/Vegetables/Bottle-gourd" },
+    { id: 2, name: "Brinjal", image: vegetable2, path: "/Vegetables/Brinjal" },
+    { id: 3, name: "Broccolie", image: vegetable3, path: "/Vegetables/Broccolie" },
+    { id: 4, name: "Cabbage", image: vegetable4, path: "/Vegetables/Cabbage" },
+    { id: 5, name: "Cauliflower", image: vegetable5, path: "/Vegetables/Cauli-Flower" },
+    { id: 6, name: "Drum stick", image: vegetable6, path: "/Vegetables/Drum-Stick" },
+    { id: 7, name: "Green chilli", image: vegetable7, path: "/Vegetables/Green-Chilli" },
+    { id: 8, name: "Lady finger", image: vegetable8, path: "/Vegetables/Ladyfinger" },
+    { id: 9, name: "Mushroom", image: vegetable9, path: "/Vegetables/Mushroom" },
+    { id: 10, name: "Onion", image: vegetable10, path: "/Vegetables/Onion" },
+    { id: 11, name: "Potato", image: vegetable11, path: "/Vegetables/Potato" },
+    { id: 12, name: "Spinach", image: vegetable12, path: "/Vegetables/Spinach" },
 ];
 
 const Vegetable: React.FC = () => {
@@ -133,7 +135,9 @@ const Vegetable: React.FC = () => {
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h5 className="mt-3 text-center">
                                                 <a href="/" className="text-decoration-none text-dark">
-                                                    {data.name}
+                                                    <Link to={data.path}>
+                                                        {data.name}
+                                                    </Link>
                                                 </a>
                                             </h5>
                                         </div>
