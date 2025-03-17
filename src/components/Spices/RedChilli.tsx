@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
-import rice1 from '../../assets/images/oil/coconutoil.jpg'
+import rice1 from '../../assets/images/spices/Redchilli-banner.jpg'
 import Header from '../Header';
 import Footer from '../Footer';
 import { useNavigate } from 'react-router-dom';
@@ -8,19 +8,18 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
-const Coconutoil: React.FC = () => {
+const RedChilli: React.FC = () => {
     const navigate = useNavigate();
     const product = {
         image: rice1,
-        title: 'Coconut Oil',
-        description: 'Nothing but 100% pure coconut oil Is made with the finest hand-picked Coconuts Contains no added preservatives or chemicals Fresh nutty fragrance of pure coconut oil Long lasting freshness 27 quality tests and 5 stage purification process – for 100% purity every time. Coconut oil is known for its versatile benefits, particularly for skin, hair, and overall health. Rich in medium-chain triglycerides (MCTs), it can boost metabolism and support weight management. Its antimicrobial properties make it effective for improving skin conditions, promoting hair growth, and supporting oral health through oil pulling. Additionally, it may help raise HDL (good cholesterol), potentially improving heart health when used in moderation.',
+        title: 'Red-chilli Exporters',
+        description: 'Red Chillies" redirects here. For the film, see Red Chillies (film). "Hot pepper" redirects here. For other uses, see Hot pepper (disambiguation). For the dish often called simply "chili", see Chili con carne. For the band, see Red Hot Chili Peppers. Young chili plants Chili peppers, also spelled chile or chilli (from Classical Nahuatl chīlli ), are varieties of the berry-fruit of plants from the genus Capsicum, which are members of the nightshade family Solanaceae, cultivated for their pungency.',
         details: [
+            { name: 'Energy', quantity: '', subName: '' },
             { name: 'Protein', quantity: '', subName: '' },
             { name: 'Fat', quantity: '', subName: '' },
-            { name: 'Carbohydrates', quantity: '', subName: '' },
-            { name: 'Caloific Value', quantity: '', subName: '' },
-            { name: 'Vitamin B1 mg', quantity: '', subName: '' },
-            { name: 'Vitamin B2 mg', quantity: '', subName: '' }
+            { name: 'Carbohydrate', quantity: '', subName: '' },
+            { name: 'Sodium', quantity: '', subName: '' }
         ]
     };
     useEffect(() => {
@@ -93,4 +92,4 @@ const Coconutoil: React.FC = () => {
     );
 };
 
-export default Coconutoil;
+export default RedChilli;

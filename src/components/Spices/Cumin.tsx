@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
-import rice1 from '../../assets/images/oil/coconutoil.jpg'
+import rice1 from '../../assets/images/spices/Cuminseed-banner.jpg'
 import Header from '../Header';
 import Footer from '../Footer';
 import { useNavigate } from 'react-router-dom';
@@ -8,19 +8,18 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
-const Coconutoil: React.FC = () => {
+const Cumin: React.FC = () => {
     const navigate = useNavigate();
     const product = {
         image: rice1,
-        title: 'Coconut Oil',
-        description: 'Nothing but 100% pure coconut oil Is made with the finest hand-picked Coconuts Contains no added preservatives or chemicals Fresh nutty fragrance of pure coconut oil Long lasting freshness 27 quality tests and 5 stage purification process – for 100% purity every time. Coconut oil is known for its versatile benefits, particularly for skin, hair, and overall health. Rich in medium-chain triglycerides (MCTs), it can boost metabolism and support weight management. Its antimicrobial properties make it effective for improving skin conditions, promoting hair growth, and supporting oral health through oil pulling. Additionally, it may help raise HDL (good cholesterol), potentially improving heart health when used in moderation.',
+        title: 'Cumin-seed Exporters',
+        description: 'Cumin ( US also Cuminum cyminum) is a flowering plant in the family Apiaceae, native to the Irano-Turanian Region. Its seeds each one contained within a fruit, which is dried – are used in the cuisines of many cultures in both whole and ground form. Although cumin is used in traditional medicine, there is no high-quality evidence that it is safe or effective as a therapeutic agent.',
         details: [
+            { name: 'Energy', quantity: '', subName: '' },
             { name: 'Protein', quantity: '', subName: '' },
             { name: 'Fat', quantity: '', subName: '' },
-            { name: 'Carbohydrates', quantity: '', subName: '' },
-            { name: 'Caloific Value', quantity: '', subName: '' },
-            { name: 'Vitamin B1 mg', quantity: '', subName: '' },
-            { name: 'Vitamin B2 mg', quantity: '', subName: '' }
+            { name: 'Carbohydrate', quantity: '', subName: '' },
+            { name: 'Sodium', quantity: '', subName: '' }
         ]
     };
     useEffect(() => {
@@ -93,4 +92,4 @@ const Coconutoil: React.FC = () => {
     );
 };
 
-export default Coconutoil;
+export default Cumin;

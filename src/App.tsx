@@ -180,6 +180,34 @@ import JasmineString from "./components/Flowers/JasmineString"
 import CarnationString from "./components/Flowers/CarnationString"
 import BabyBreath from "./components/Flowers/BabyBreath"
 import MixedMarigold from "./components/Flowers/MixedMarigold"
+import Garlic from "./components/Spices/Garlic"
+import Clove from "./components/Spices/Clove"
+import MustardSeed from "./components/Spices/MustardSeed"
+import BayLeaf from "./components/Spices/BayLeaf"
+import Turmeric from "./components/Spices/Turmeric"
+import Ginger from "./components/Spices/Ginger"
+import StarAnise from "./components/Spices/StarAnise"
+import Cinamon from "./components/Spices/Cinamon"
+import Nutmeg from "./components/Spices/Nutmeg"
+import Cumin from "./components/Spices/Cumin"
+import BlackPepper from "./components/Spices/BlackPepper"
+import RedChilli from "./components/Spices/RedChilli"
+import Coriander from "./components/Spices/Coriander"
+import CaromSeed from "./components/Spices/CaromSeed"
+import Mace from "./components/Spices/Mace"
+import PoppySeed from "./components/Spices/PoppySeed"
+import GreenCardamom from "./components/Spices/GreenCardamom"
+import PepperCorns from "./components/Spices/PepperCorns"
+import BrownCardamam from "./components/Spices/BrownCardamam"
+import Saffron from "./components/Spices/Saffron"
+import RiceFlour from "./components/Flour/RiceFlour"
+import RedRiceFlour from "./components/Flour/RedRiceFlour"
+import RagiFlour from "./components/Flour/RagiFlour"
+import MoongDalFlour from "./components/Flour/MoongDalFlour"
+import UradDalFlour from "./components/Flour/UradDalFlour"
+import RedRiceRoastedFlour from "./components/Flour/RedRiceRoastedFlour"
+import MoongDalRoastedFlour from "./components/Flour/MoongDalRoastedFlour"
+import UradRoastedFlour from "./components/Flour/UradRoastedFlour"
 
 const App = () => (
   <Provider store={store}>
@@ -308,6 +336,186 @@ const App = () => (
             <>
               <Head title="Spices| Koogul Industries" />
               <Spices />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/garlic"
+          element={(
+            <>
+              <Head title="Garlic | Koogul Industries" />
+              <Garlic />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/clove"
+          element={(
+            <>
+              <Head title="Clove | Koogul Industries" />
+              <Clove />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/mustard-seeds"
+          element={(
+            <>
+              <Head title="Mustard Seed| Koogul Industries" />
+              <MustardSeed />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/bay-leaf"
+          element={(
+            <>
+              <Head title="Bay Leaf| Koogul Industries" />
+              <BayLeaf />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/turmeric"
+          element={(
+            <>
+              <Head title="Turmeric | Koogul Industries" />
+              <Turmeric />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/ginger"
+          element={(
+            <>
+              <Head title="Ginger | Koogul Industries" />
+              <Ginger />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/star-anise"
+          element={(
+            <>
+              <Head title="Star-Anise | Koogul Industries" />
+              <StarAnise />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/cinnamon"
+          element={(
+            <>
+              <Head title="Cinnamon | Koogul Industries" />
+              <Cinamon />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/nutmeg"
+          element={(
+            <>
+              <Head title="Nutmeg | Koogul Industries" />
+              <Nutmeg />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/cumin"
+          element={(
+            <>
+              <Head title="Cumin | Koogul Industries" />
+              <Cumin />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/black-pepper"
+          element={(
+            <>
+              <Head title="Black Pepper| Koogul Industries" />
+              <BlackPepper />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/red-chilli"
+          element={(
+            <>
+              <Head title="Red Chilli | Koogul Industries" />
+              <RedChilli />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/coriander"
+          element={(
+            <>
+              <Head title="Coriander | Koogul Industries" />
+              <Coriander />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/carom-seeds"
+          element={(
+            <>
+              <Head title="Carom Seeds | Koogul Industries" />
+              <CaromSeed />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/mace"
+          element={(
+            <>
+              <Head title="Mace | Koogul Industries" />
+              <Mace />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/poppy-seed"
+          element={(
+            <>
+              <Head title="Poppy Seed | Koogul Industries" />
+              <PoppySeed />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/green-cardamom"
+          element={(
+            <>
+              <Head title="Green Cardamom | Koogul Industries" />
+              <GreenCardamom />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/pepper-corns"
+          element={(
+            <>
+              <Head title="Pepper Corns | Koogul Industries" />
+              <PepperCorns />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/brown-cardamam"
+          element={(
+            <>
+              <Head title="Brown Cardamam | Koogul Industries" />
+              <BrownCardamam />
+            </>
+          )}
+        />
+        <Route
+          path="/spices/saffron"
+          element={(
+            <>
+              <Head title="Saffron | Koogul Industries" />
+              <Saffron />
             </>
           )}
         />
@@ -461,6 +669,78 @@ const App = () => (
             <>
               <Head title="Flour| Koogul Industries" />
               <Flour />
+            </>
+          )}
+        />
+        <Route
+          path="/flour/rice-flour"
+          element={(
+            <>
+              <Head title="Rice Flour | Koogul Industries" />
+              <RiceFlour />
+            </>
+          )}
+        />
+        <Route
+          path="/flour/red-rice-flour"
+          element={(
+            <>
+              <Head title="Red Rice Flour | Koogul Industries" />
+              <RedRiceFlour />
+            </>
+          )}
+        />
+        <Route
+          path="/flour/ragi-flour"
+          element={(
+            <>
+              <Head title="Ragi Flour | Koogul Industries" />
+              <RagiFlour />
+            </>
+          )}
+        />
+        <Route
+          path="/flour/moong-dal-flour"
+          element={(
+            <>
+              <Head title="Moong Dal Flour | Koogul Industries" />
+              <MoongDalFlour />
+            </>
+          )}
+        />
+        <Route
+          path="/flour/urad-dal-flour"
+          element={(
+            <>
+              <Head title="Urad Dal Flour | Koogul Industries" />
+              <UradDalFlour />
+            </>
+          )}
+        />
+        <Route
+          path="/flour/red-rice-roasted-flour"
+          element={(
+            <>
+              <Head title="Red Rice Roasted Flour | Koogul Industries" />
+              <RedRiceRoastedFlour />
+            </>
+          )}
+        />
+        <Route
+          path="/flour/moong-dal-roasted-flour"
+          element={(
+            <>
+              <Head title="Moong Dal Roasted Flour | Koogul Industries" />
+              <MoongDalRoastedFlour />
+            </>
+          )}
+        />
+        <Route
+          path="/flour/urad-roasted-flour"
+          element={(
+            <>
+              <Head title="Urad Roasted Flour | Koogul Industries" />
+              <UradRoastedFlour />
             </>
           )}
         />
