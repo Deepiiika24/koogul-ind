@@ -21,10 +21,10 @@ const SinglePageHeader: React.FC = () => {
         <h1 className="text-center text-white display-6">Certificates</h1>
         <ol className="breadcrumb justify-content-center mb-0">
           <li className="breadcrumb-item">
-            <a href="/">Home</a>
+            <a href="/" className='text-primary'>Home</a>
           </li>
           <li className="breadcrumb-item">
-            <a href="/#">Pages</a>
+            <a href="/#" className='text-primary'>Pages</a>
           </li>
           <li className="breadcrumb-item active text-white">Certificates</li>
         </ol>
@@ -40,7 +40,7 @@ const SinglePageHeader: React.FC = () => {
 
           <div data-aos="fade-up">
             <div className="container-fluid">
-              <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+              <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
               When it comes to food handling and export, maintaining high levels of hygiene, quality and safety are crucial. This is why, at Koogul Industries, we meet international food safety and quality standards through various quality checks and following strict protocols throughout the process. This has allowed us to be accredited to a number of quality and food safety certifications. </p>
             </div>
           </div>
@@ -58,7 +58,7 @@ const SinglePageHeader: React.FC = () => {
           style={{ width: "70%", height: "auto", boxShadow:"10px 4px 8px rgba(0, 0, 0, 0.2)"}}
         />
         <div className="py-2">
-          <a  className="h5 text-primary">
+          <a  className="h5 text-dark">
           apeda Licence
           </a>
         </div>
@@ -73,7 +73,7 @@ const SinglePageHeader: React.FC = () => {
           alt="" style={{ width: "70%", height: "auto", boxShadow:"10px 4px 8px rgba(0, 0, 0, 0.2)" }}
         />
         <div className="py-2">
-          <a  className="h5 text-primary">
+          <a  className="h5 text-dark">
           fssai Licence
           </a>
         </div>
@@ -88,7 +88,7 @@ const SinglePageHeader: React.FC = () => {
           alt="" style={{ width: "70%", height: "auto",boxShadow:"10px 4px 8px rgba(0, 0, 0, 0.2)" }}
         />
         <div className="py-2">
-          <a  className="h5 text-primary">
+          <a  className="h5 text-dark">
           IEC Certificate
           </a>
         </div>
@@ -103,7 +103,7 @@ const SinglePageHeader: React.FC = () => {
           alt="" style={{ width: "70%", height: "auto", boxShadow:"10px 4px 8px rgba(0, 0, 0, 0.2)" }}
         />
         <div className="py-2">
-          <a className="h5 text-primary">
+          <a className="h5 text-dark">
           Coconut Licence
 
           </a>

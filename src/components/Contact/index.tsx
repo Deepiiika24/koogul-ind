@@ -36,7 +36,7 @@ const Contact: React.FC = () => {
           style={{
             marginTop: "152px",
             position: "relative",
-            backgroundImage: `url(https://img.freepik.com/premium-photo/contact-us-customer-support-hotline-people-connect-businessman-holding-phonexaonline-customer-service-conversation-assistant_36325-4925.jpg)`,
+            backgroundImage: `url(https://img.freepik.com/premium-photo/contact-us-wood-cube-symbol-chat-mail-address-mobile-phone-website-page-contact-us-symbols-different-communication-channels-customer_256259-2855.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center center",
             backgroundRepeat: "no-repeat",
@@ -46,10 +46,10 @@ const Contact: React.FC = () => {
           <h1 data-aos="fade-up" className="text-center text-white display-6">Contact</h1>
           <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
             <li className="breadcrumb-item">
-              <a href="/index.html#">Home</a>
+              <a href="/" className='text-primary'>Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href="/#">Pages</a>
+              <a href="" className='text-primary'>Pages</a>
             </li>
             <li className="breadcrumb-item active text-white">Contact</li>
           </ol>
@@ -58,12 +58,12 @@ const Contact: React.FC = () => {
 
         {/* Contact Start */}
         <div className="container-fluid contact py-5">
-          <div className="container py-5">
-            <div className="p-5 bg-light rounded">
+          <div className="container py-5" id='py-5'>
+            <div className="p-5 bg-light rounded" id='p-5'>
               <div className="row g-4">
                 <div className="col-12">
-                  <div className="text-center mx-auto" style={{ maxWidth: 700 }}>
-                    <h1 className="text-primary" data-aos="fade-up">Get in touch</h1>
+                  <div className="mx-auto" style={{ maxWidth: 700, textAlign:"justify" }}>
+                    <h1 className="text-primary text-center" data-aos="fade-up">Get in touch</h1>
                     <p className="mb-4" data-aos="fade-up">
                       We’d love to hear from you! Whether you have a question about our products, orders, delivery, or anything else, our team is ready to help.
                     </p>
@@ -73,7 +73,6 @@ const Contact: React.FC = () => {
                   <div className="h-100 rounded">
                     <iframe
                       className="rounded w-100"
-                      style={{ height: 400 }}
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12577.829405082637!2d145.18292726064897!3d-37.98979144669541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6138b0956e77d%3A0x7ec2b49b0f1ec698!2s1%2F93B%20Cheltenham%20Rd%2C%20Dandenong%20VIC%203175%2C%20Australia!5e0!3m2!1sen!2sin!4v1741263082598!5m2!1sen!2sin"
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
