@@ -17,4 +17,7 @@ export default defineConfig({
     setupFiles: "./src/setupTests.ts", // Ensure this file exists
     exclude: [...configDefaults.exclude, "dist/**"], // Exclude dist folder from tests
   },
+  preview: {
+    open: true,
+  },
 });
