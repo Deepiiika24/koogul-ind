@@ -22,7 +22,7 @@ const FeaturesSection: React.FC = () => {
     { icon: faPhoneAlt, title: '24/7 Support', description: 'Shop with Confidence – 24/7 Support Whenever You Need.' },
   ]
   return (
-    <div className="container-fluid features py-5" id='py-5'>
+    <div className="container-fluid features py-5">
 
       <Container className="py-5" id='py-5'>
       <div data-aos="fade-up">
