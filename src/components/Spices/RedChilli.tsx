@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
-import rice1 from '../../assets/images/spices/redchilli.jpg'
+import rice1 from '../../assets/images/spices/Redchilli-banner.jpg'
 import Header from '../Header';
 import Footer from '../Footer';
 import { useNavigate } from 'react-router-dom';
