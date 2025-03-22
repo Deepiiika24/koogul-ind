@@ -85,7 +85,7 @@ const Products: React.FC = () => {
           <Col xs={12} lg={6}>
             <Image src={About} alt='About.png' className='img-fluid rounded' style={{ height: "-webkit-fill-available" }} />
           </Col>
-          <Col xs={12} lg={6} className='px-5'>
+          <Col xs={12} lg={6} className='px-5' id='px-5'>
             <h1 className='text-center mt-4 mb-4' style={{ color: "#D21215" }}>WELCOME TO <br /> KOOGUL INDUSTRIES</h1>
             <p style={{ textAlign: "justify" }}>
               Established in 2013 as a family-owned import/export business, <b>Koogul Industries</b> has grown into one of Melbourne’s leading importers. With a vast network of warehouses and a team of industry experts, we cater to both consumer and commercial clients, ensuring excellence in every transaction.
@@ -189,9 +189,9 @@ const Products: React.FC = () => {
       <Container style={{ margin: "100px auto" }}>
         <Row>
           <Col xs={12} lg={6}>
-            <Image data-aos="zoom-out-up" src={Shipping} alt='About.png' className='img-fluid rounded' style={{ height: "-webkit-fill-available" }} />
+            <Image data-aos="zoom-in-up" src={Shipping} alt='About.png' className='img-fluid rounded' style={{ height: "-webkit-fill-available" }} />
           </Col>
-          <Col xs={12} lg={6} className='px-5' data-aos="fade-up">
+          <Col xs={12} lg={6} id='px-5' className='px-5' data-aos="fade-up">
             <h5 className='text-start mt-3 mb-3' style={{ color: "#D21215" }}>WHY CHOOSE US</h5>
             <h1 className='text-start mt-3 mb-3'>UNMATCHED QUALITY</h1>
             <p className='mt-2 mb-2'>We source our flowers from the best local and international growers, ensuring that every bouquet is fresh, vibrant, and long-lasting.</p>
