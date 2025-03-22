@@ -5,8 +5,9 @@ import { configDefaults } from "vitest/config";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: "/",
   server: {
-    port: process.env.PORT as unknown as number,
+    open: true,
   },
   build: {
     outDir: "dist", // Ensure the build output is placed in "dist"
