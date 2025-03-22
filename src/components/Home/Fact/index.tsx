@@ -21,7 +21,7 @@ const Fact: React.FC = () => {
         </div>
         <div data-aos="fade-up">
         <div className="container-fluid">
-          <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+          <p className="text-justify p-3 mx-auto" style={{ width: "100%", textAlign: "justify" }}>
           We are a dynamic creative agency based in Melbourne, Australia, specializing in multilingual localization and top-notch translation solutions. With our extensive experience, we deliver high-quality, precise translations tailored to meet your global communication needs.  </p>
         </div>
         </div>

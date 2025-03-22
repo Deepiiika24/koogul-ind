@@ -30,7 +30,8 @@ $link-decoration: none;
 $enable-negative-margins: true;
 @import "bootstrap/scss/bootstrap";
 
-#flight-bg, #faq-section {
+#flight-bg,
+#faq-section {
     --bs-gutter-x: -1.rem !important;
 }
 
@@ -42,7 +43,7 @@ $enable-negative-margins: true;
     margin-right: -44px !important;
 }
 
-.carousel-item a {
+.card a {
     position: unset !important;
     transform: none !important;
     font-size: 20px !important;
@@ -61,7 +62,9 @@ $enable-negative-margins: true;
 // }
 
 @media (max-width:768px) {
-    .px-5 {
+    .px-5,
+    .p-3,
+    .p-5 {
         padding-right: 0 !important;
         padding-left: 0 !important;
     }
@@ -90,11 +93,13 @@ $enable-negative-margins: true;
     #textCenter {
         text-align: center !important;
     }
+
     #columns {
         width: 50% !important;
         display: flex;
         justify-content: center;
     }
+
     .fw-bold {
         font-weight: 700 !important;
         padding: 43px 0px 0px 0px;
@@ -107,9 +112,40 @@ $enable-negative-margins: true;
         display: flex;
         justify-content: center;
     }
+
     .fw-bold {
         font-weight: 700 !important;
         padding: 43px 0px 0px 0px;
+    }
+}
+
+@media (max-width:375px) {
+    .px-5,
+    .py-5,
+    .p-3,
+    .p-5 {
+        padding: 1px !important;
+    }
+}
+
+@media (max-width:320px){
+    .px-5,
+    .py-5,
+    .p-3,
+    .p-5 {
+        padding: 1px !important;
+    }
+    .row{
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+    .position-relative {
+        position: relative !important;
+        width: 85% !important;
+        margin: 0 auto !important;
+    }
+    .carousel-control-next, .carousel-control-prev{
+        top:35% !important;
     }
 }
 

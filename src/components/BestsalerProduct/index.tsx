@@ -41,7 +41,7 @@ const BestsalerProduct: React.FC = () => {
         </div>
         </div>
         <div data-aos="fade-up">
-        <div className="bg-light p-5 rounded">
+        <div className="rounded">
         <div className="row g-4">
             <div className="col-md-6 col-lg-6 col-xl-3">
             <div className="text-center">
