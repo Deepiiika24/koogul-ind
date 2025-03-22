@@ -22,9 +22,9 @@ const FeaturesSection: React.FC = () => {
     { icon: faPhoneAlt, title: '24/7 Support', description: 'Shop with Confidence – 24/7 Support Whenever You Need.' },
   ]
   return (
-    <div className="container-fluid features py-5">
+    <div className="container-fluid features py-5" id='py-5'>
 
-      <Container className="py-5">
+      <Container className="py-5" id='py-5'>
       <div data-aos="fade-up">
         <nav className="navbar d-flex justify-content-center">
           <img
@@ -42,7 +42,7 @@ const FeaturesSection: React.FC = () => {
         </div>
         <div data-aos="fade-up">
         <div className="container-fluid">
-          <p className="text-justify p-3 mx-auto" style={{ width: "100%", textAlign: "justify" }}>
+          <p id='p-3' className="text-justify p-3 mx-auto" style={{ width: "100%", textAlign: "justify" }}>
             "As a leading exporter of premium quality food products, Koogul Industries is committed to bringing the rich and diverse flavors of India to the world. Our extensive range of food and spice exports is sourced directly from trusted farms and suppliers, ensuring freshness and authenticity in every shipment. With a strong focus on meeting international quality standards, we guarantee that our products reach global markets with the highest level of care and excellence. Koogul Industries is dedicated to supporting your business by delivering the finest Indian produce to every corner of the globe."
 
           </p>

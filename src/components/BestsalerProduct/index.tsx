@@ -29,8 +29,8 @@ const BestsalerProduct: React.FC = () => {
     });
   }, []);
   return (
-    <div className="container-fluid py-5">
-      <div className="container py-5" >
+    <div className="container-fluid py-5" id='py-5'>
+      <div className="container py-5" id='py-5'>
       <div data-aos="fade-up">
         <div className="text-center mx-auto mb-5" style={{ maxWidth: 700 }}>
           <h1 className="display-4" style={{paddingTop:"0rem"}}>Bestseller Products</h1>

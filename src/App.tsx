@@ -1999,7 +1999,6 @@ const App = () => (
             </>
           }
         />
-        <Route path="*" element={<Navigate to="/404.html" />} />
       </Routes>
     </BrowserRouter>
   </Provider>
