@@ -35,13 +35,13 @@ $enable-negative-margins: true;
     --bs-gutter-x: -1.rem !important;
 }
 
-.carousel-control-prev {
-    margin-left: -44px !important;
-}
+// .carousel-control-prev {
+//     margin-left: -44px !important;
+// }
 
-.carousel-control-next {
-    margin-right: -44px !important;
-}
+// .carousel-control-next {
+//     margin-right: -44px !important;
+// }
 
 .card a {
     position: unset !important;
@@ -138,14 +138,6 @@ $enable-negative-margins: true;
     .row{
         max-width: 320px !important;
         margin: 0 auto !important;
-    }
-    .position-relative {
-        position: relative !important;
-        width: 85% !important;
-        margin: 0 auto !important;
-    }
-    .carousel-control-next, .carousel-control-prev{
-        top:35% !important;
     }
 }
 
