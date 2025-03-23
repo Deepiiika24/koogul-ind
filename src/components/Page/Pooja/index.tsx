@@ -184,10 +184,10 @@ const Pooja: React.FC = () => {
           <h1 className="text-center text-white display-6">Pooja Product</h1>
           <ol className="breadcrumb justify-content-center mb-0">
             <li className="breadcrumb-item">
-              <a href="/index.html#">Home</a>
+              <a href="/" className='text-primary'>Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href="/#">Pages</a>
+              <a href="/" className='text-primary'>Pages</a>
             </li>
             <li className="breadcrumb-item active text-white">Pooja Product</li>
           </ol>
@@ -204,13 +204,13 @@ const Pooja: React.FC = () => {
         </div>
         <div data-aos="fade-up">
           <div className="container-fluid">
-            <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+            <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "center" }}>
               Koogul Industries Pooja Products encompass a range of meticulously crafted items that are essential for performing rituals and ceremonies. These products are designed to enhance the spiritual experience and create an atmosphere of devotion and reverence. Our Pooja Products offer a wide variety of items, including ghee diya, sambrani cups, chandan tika, camphor, kapoor, hawan samagri, puja oils, and more.</p>
           </div>
         </div>
       </Container>
       <div className='bg-light p-5 rounded'>
-        <h2 className='text-start mb-4' data-aos="fade-up">SPECIAL POOJA KIT</h2>
+        <h2 className='text-start mb-4' data-aos="fade-up">Special Pooja Kit</h2>
         <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
           {slides.map((group, index) => (
             <Carousel.Item key={index}>
@@ -236,7 +236,7 @@ const Pooja: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
-        <h2 className='mt-5 mb-5' data-aos="fade-up">BRASS POOJA PRODUCT</h2>
+        <h2 className='mt-5 mb-5' data-aos="fade-up">Brass Pooja Product</h2>
         <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
           {garSlides.map((group, index) => (
             <Carousel.Item key={index}>
@@ -262,7 +262,7 @@ const Pooja: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
-        <h2 className='mt-5 mb-5' data-aos="fade-up">SPIRITUAL AND RELIGIOUS</h2>
+        <h2 className='mt-5 mb-5' data-aos="fade-up">Spiritual and Religious</h2>
         <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
           {petalSlides.map((group, index) => (
             <Carousel.Item key={index}>
@@ -288,7 +288,7 @@ const Pooja: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
-        <h2 className='mt-5 mb-5' data-aos="fade-up">MEDICINAL AND HERBAL</h2>
+        <h2 className='mt-5 mb-5' data-aos="fade-up">Medicinal and Herbal</h2>
         <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
           {stringSlides.map((group, index) => (
             <Carousel.Item key={index}>
@@ -314,7 +314,7 @@ const Pooja: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
-        <h2 className='mt-5 mb-5' data-aos="fade-up">AGRICULTURAL AND NATURAL</h2>
+        <h2 className='mt-5 mb-5' data-aos="fade-up">Agricultural and Natural</h2>
         <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
           {naturalslide.map((group, index) => (
             <Carousel.Item key={index}>

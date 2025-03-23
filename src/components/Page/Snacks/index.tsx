@@ -71,7 +71,7 @@ const Snacks = () => {
                         </div>
                         <div data-aos="fade-up">
                             <div className="container-fluid">
-                                <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+                                <p className="text-justify p-3 mx-auto" id="p-3" style={{ width: "100%", textAlign: "center" }}>
                                     Koogul Industries Food Exports is famous for delivering excellent quality of organic Indian spices to middle east nations. The taste and aroma these spices add to your food is beyond the best experience. We have a range of customers who come back to us specially for buying our range of spices because it gives them ultimate satisfaction of eating very tasty food. A high quality standard is maintained while delivering organic Indian spices to the customers.
                                 </p>
                             </div>

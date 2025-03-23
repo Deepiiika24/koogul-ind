@@ -13,13 +13,13 @@ const SinglePageHeader: React.FC = () => {
   return (
     <div className="container-fluid Flour-banner py-5">
       <div data-aos="fade-up">
-      <h1 className="text-center text-white display-6">Rice</h1>
+      <h1 className="text-center text-white display-6">Flour</h1>
       <ol className="breadcrumb justify-content-center mb-0">
         <li className="breadcrumb-item">
-          <a href="/index.html#">Home</a>
+          <a href="/" className="text-primary">Home</a>
         </li>
         <li className="breadcrumb-item">
-          <a href="/public#">Pages</a>
+          <a href="/" className="text-primary">Pages</a>
         </li>
         <li className="breadcrumb-item active text-white">Rice</li>
       </ol>

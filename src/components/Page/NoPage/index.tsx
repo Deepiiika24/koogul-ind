@@ -149,10 +149,10 @@ const Flower: React.FC = () => {
           <h1 className="text-center text-white display-6">Flower</h1>
           <ol className="breadcrumb justify-content-center mb-0">
             <li className="breadcrumb-item">
-              <a href="/index.html#">Home</a>
+              <a href="/" className='text-primary'>Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href="/#">Pages</a>
+              <a href="/" className='text-primary'>Pages</a>
             </li>
             <li className="breadcrumb-item active text-white">Flower</li>
           </ol>
@@ -169,13 +169,13 @@ const Flower: React.FC = () => {
         </div>
         <div data-aos="fade-up">
           <div className="container-fluid">
-            <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+            <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "center" }}>
               Floriculture in India primarily means the cultivation of flowers or flower farming. Known for its rich diversity, India's floriculture sector thrives with a wide variety of flowers, making it a prominent player in the global flower market. At Koogul Industries, we take pride in being one of the leading exporters of exquisite flowers from India, ensuring that the beauty of Indian floriculture reaches every corner of the world.</p>
           </div>
         </div>
       </Container>
       <div className='bg-light p-5 rounded'>
-        <h2 className='text-start mb-4' data-aos="fade-up">FLOWER HEADS</h2>
+        <h2 className='text-start mb-4' data-aos="fade-up">Flower Heads</h2>
         <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
           {slides.map((group, index) => (
             <Carousel.Item key={index}>
@@ -201,7 +201,7 @@ const Flower: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
-        <h2 className='mt-5 mb-5' data-aos="fade-up">FLOWER GARLANDS</h2>
+        <h2 className='mt-5 mb-5' data-aos="fade-up">Flower Garlands</h2>
         <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
           {garSlides.map((group, index) => (
             <Carousel.Item key={index}>
@@ -227,7 +227,7 @@ const Flower: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
-        <h2 className='mt-5 mb-5' data-aos="fade-up">FLOWER PETALS</h2>
+        <h2 className='mt-5 mb-5' data-aos="fade-up">Flower Petals</h2>
         <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
           {petalSlides.map((group, index) => (
             <Carousel.Item key={index}>
@@ -253,7 +253,7 @@ const Flower: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
-        <h2 className='mt-5 mb-5' data-aos="fade-up">FLOWER STRING</h2>
+        <h2 className='mt-5 mb-5' data-aos="fade-up">Flower String</h2>
         <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
           {stringSlides.map((group, index) => (
             <Carousel.Item key={index}>
