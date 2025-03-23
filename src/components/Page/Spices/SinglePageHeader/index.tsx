@@ -11,7 +11,17 @@ const SinglePageHeader: React.FC = () => {
     });
   }, []);
   return (
-    <div className="container-fluid spices-banner py-5">
+    <div className="container-fluid py-5"
+    style={{
+      marginTop: "152px",
+      position: "relative",
+      backgroundImage: `url(https://img.freepik.com/premium-photo/spices-herbs-realistic-frame-black-background-flat-top-view_1091270-45733.jpg)`,
+      backgroundSize: "cover",
+      backgroundPosition: "center center",
+      backgroundRepeat: "no-repeat",
+      height: "auto"
+    }}
+    >
       <div data-aos="fade-up">
         <h1 className="text-center text-white display-6">Spices</h1>
         <ol className="breadcrumb justify-content-center mb-0">

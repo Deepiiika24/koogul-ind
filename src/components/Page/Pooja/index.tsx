@@ -174,7 +174,7 @@ const Pooja: React.FC = () => {
           style={{
             marginTop: "152px",
             position: "relative",
-            backgroundImage: `url(${banner})`,
+            backgroundImage: `url(https://img.freepik.com/premium-photo/bhai-dooj-hologram-concept-digital-voice-assistant-device-with-floating-glowing-symbols-white-ba_980716-749110.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center center",
             backgroundRepeat: "no-repeat",

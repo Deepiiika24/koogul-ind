@@ -63,7 +63,7 @@ const Leaf: React.FC = () => {
           style={{
             marginTop: "152px",
             position: "relative",
-            backgroundImage: `url(src/assets/images/Leaf/leaf-banner.png)`,
+            backgroundImage: `url(https://img.freepik.com/premium-photo/close-up-yellow-leaves-against-orange-background_1048944-14526017.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center center",
             backgroundRepeat: "no-repeat",

@@ -11,7 +11,17 @@ const SinglePageHeader: React.FC = () => {
     });
   }, []);
   return (
-    <div className="container-fluid Flour-banner py-5">
+    <div className="container-fluid py-5"
+    style={{
+      marginTop: "152px",
+      position: "relative",
+      backgroundImage: `url(https://img.freepik.com/premium-photo/bowl-flour-sits-wooden-table-loaf-bread-some-wheat_99233-16095.jpg)`,
+      backgroundSize: "cover",
+      backgroundPosition: "center center",
+      backgroundRepeat: "no-repeat",
+      height: "auto"
+    }}
+    >
       <div data-aos="fade-up">
       <h1 className="text-center text-white display-6">Flour</h1>
       <ol className="breadcrumb justify-content-center mb-0">
