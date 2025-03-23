@@ -35,13 +35,21 @@ $enable-negative-margins: true;
     --bs-gutter-x: -1.rem !important;
 }
 
-// .carousel-control-prev {
-//     margin-left: -44px !important;
-// }
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+}
 
-// .carousel-control-next {
-//     margin-right: -44px !important;
-// }
+#slider-items .carousel-control-prev {
+    margin-left: -44px !important;
+}
+
+#slider-items .carousel-control-next {
+    margin-right: -44px !important;
+}
 
 .card a {
     position: unset !important;

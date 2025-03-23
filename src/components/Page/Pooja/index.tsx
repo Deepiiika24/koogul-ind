@@ -211,7 +211,7 @@ const Pooja: React.FC = () => {
       </Container>
       <div className='bg-light p-5 rounded'>
         <h2 className='text-start mb-4' data-aos="fade-up">Special Pooja Kit</h2>
-        <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
+        <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {slides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
@@ -237,7 +237,7 @@ const Pooja: React.FC = () => {
           ))}
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Brass Pooja Product</h2>
-        <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
+        <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {garSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
@@ -263,7 +263,7 @@ const Pooja: React.FC = () => {
           ))}
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Spiritual and Religious</h2>
-        <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
+        <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {petalSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
@@ -289,7 +289,7 @@ const Pooja: React.FC = () => {
           ))}
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Medicinal and Herbal</h2>
-        <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
+        <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {stringSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
@@ -315,7 +315,7 @@ const Pooja: React.FC = () => {
           ))}
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Agricultural and Natural</h2>
-        <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
+        <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {naturalslide.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">

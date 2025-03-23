@@ -250,7 +250,7 @@ const App = () => (
           )}
         />
         <Route
-          path="/contact-us"
+          path="/Contact"
           element={(
             <>
               <Head title="Contact | Koogul Industries" />

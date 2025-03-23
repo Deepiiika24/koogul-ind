@@ -55,7 +55,7 @@ const NavigationLinks: React.FC<{ activeLink: string }> = ({ activeLink }) => {
           Masala
         </NavDropdown.Item>
       </NavDropdown>
-      <Nav.Link onClick={() => navigate("/contact-us")} active={activeLink === "contact-us"}>
+      <Nav.Link onClick={() => navigate("/Contact")} active={activeLink === "Contact"}>
         Contact Us
       </Nav.Link>
     </Nav>

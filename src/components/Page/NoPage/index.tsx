@@ -176,7 +176,7 @@ const Flower: React.FC = () => {
       </Container>
       <div className='bg-light p-5 rounded'>
         <h2 className='text-start mb-4' data-aos="fade-up">Flower Heads</h2>
-        <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
+        <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {slides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
@@ -202,7 +202,7 @@ const Flower: React.FC = () => {
           ))}
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Flower Garlands</h2>
-        <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
+        <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {garSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
@@ -228,7 +228,7 @@ const Flower: React.FC = () => {
           ))}
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Flower Petals</h2>
-        <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
+        <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {petalSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
@@ -254,7 +254,7 @@ const Flower: React.FC = () => {
           ))}
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Flower String</h2>
-        <Carousel data-aos="fade-up" interval={null} controls indicators={false} wrap={true}>
+        <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {stringSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
