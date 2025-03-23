@@ -58,7 +58,7 @@ const Flour = () => {
                         </div>
                         <div data-aos="fade-up">
                             <div className="container-fluid">
-                                <p className="text-justify p-3 mx-auto" id="p-3" style={{ width: "100%", textAlign: "center" }}>
+                                <p className="text-justify p-3 mx-auto" id="p-3" style={{ width: "100%", textAlign: "justify" }}>
                                     At Koogul Industries, we believe great baking starts with exceptional flour. Sourced from trusted growers and milled to perfection, our premium flour delivers unmatched softness, purity, and consistency. Every batch is carefully tested to ensure it meets the highest standards — because quality you can trust makes all the difference.</p>
                             </div>
                         </div>

@@ -69,10 +69,10 @@ const Pickle: React.FC = () => {
                     <h1 data-aos="fade-up" className="text-center text-white display-6">Pickles</h1>
                     <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
                         <li className="breadcrumb-item">
-                            <a href="/index.html#">Home</a>
+                            <a href="/" className='text-primary'>Home</a>
                         </li>
                         <li className="breadcrumb-item">
-                            <a href="/#">Pages</a>
+                            <a href="/" className='text-primary'>Pages</a>
                         </li>
                         <li className="breadcrumb-item active text-white">Pickles</li>
                     </ol>
@@ -83,13 +83,13 @@ const Pickle: React.FC = () => {
                 <div data-aos="fade-up">
                     <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
                         <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-                            WE EXPORT FINEST PICKLES, DELIVERING FLAVOR IN EVERY JAR
+                            We Export Finest Pickles, Delivering flavor in every Jar
                         </h1>
                     </div>
                 </div>
                 <div data-aos="fade-up">
                     <div className="container-fluid">
-                        <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+                        <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
                             At Koogul Industries, we take pride in exporting only the finest pickles to satisfy the varied tastes of our global customers. Our commitment to excellence starts with selecting the freshest ingredients from trusted sources. Each jar of pickle undergoes strict quality checks to ensure it meets our high standards.</p>
                     </div>
                 </div>

@@ -163,13 +163,13 @@ const Flower: React.FC = () => {
         <div data-aos="fade-up">
           <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
             <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-              TRUSTED PARTNER IN FLORICULTURE EXPORTS
+              Trusted Partner in Floriculture Exports
             </h1>
           </div>
         </div>
         <div data-aos="fade-up">
           <div className="container-fluid">
-            <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "center" }}>
+            <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
               Floriculture in India primarily means the cultivation of flowers or flower farming. Known for its rich diversity, India's floriculture sector thrives with a wide variety of flowers, making it a prominent player in the global flower market. At Koogul Industries, we take pride in being one of the leading exporters of exquisite flowers from India, ensuring that the beauty of Indian floriculture reaches every corner of the world.</p>
           </div>
         </div>

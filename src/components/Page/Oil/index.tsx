@@ -60,10 +60,10 @@ const Oil: React.FC = () => {
           <h1 data-aos="fade-up" className="text-center text-white display-6">Oil</h1>
           <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
             <li className="breadcrumb-item">
-              <a href="/index.html#">Home</a>
+              <a href="/" className='text-primary'>Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href="/#">Pages</a>
+              <a href="/" className='text-primary'>Pages</a>
             </li>
             <li className="breadcrumb-item active text-white">Oil</li>
           </ol>
@@ -74,13 +74,13 @@ const Oil: React.FC = () => {
         <div data-aos="fade-up">
           <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
             <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-              OIL EXPORTER FROM INDIA
+              Oil Exporter from India
             </h1>
           </div>
         </div>
         <div data-aos="fade-up">
           <div className="container-fluid">
-            <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+            <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
               Cooking oil is a versatile kitchen staple used for frying, sautéing, roasting, baking, and as a base for dressings and marinades. It enhances the flavor and texture of food while providing essential fats needed for a balanced diet. Different types of cooking oils, such as olive, sunflower, coconut, and canola oil, have unique properties, including varying smoke points and health benefits, making them suitable for different cooking methods. Additionally, cooking oils are also used in food preservation, as they help to extend shelf life and maintain moisture in various dishes.</p>
           </div>
         </div>

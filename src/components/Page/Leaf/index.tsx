@@ -73,10 +73,10 @@ const Leaf: React.FC = () => {
           <h1 data-aos="fade-up" className="text-center text-white display-6">Leaves</h1>
           <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
             <li className="breadcrumb-item">
-              <a href="/index.html#">Home</a>
+              <a href="/" className='text-primary'>Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href="/#">Pages</a>
+              <a href="/" className='text-primary'>Pages</a>
             </li>
             <li className="breadcrumb-item active text-white">Leaves</li>
           </ol>
@@ -87,13 +87,13 @@ const Leaf: React.FC = () => {
         <div data-aos="fade-up">
           <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
             <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-              EXPORTING PREMIUM QUALITY LEAVES FOR ALL YOUR NEEDS
+              Exporting Premium Quality Leaves for all your needs
             </h1>
           </div>
         </div>
         <div data-aos="fade-up">
           <div className="container-fluid">
-            <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+            <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
               At Koogul Industries, we pride ourselves on providing a diverse range of premium quality leaves to meet all your culinary, decorative, and ceremonial needs. Our leaves are handpicked, ensuring the utmost freshness and quality with every shipment. We cater to both large-scale commercial orders and individual customer requests, making us your trusted partner in leaf export.</p>
           </div>
         </div>

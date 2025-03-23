@@ -77,8 +77,7 @@ const Spices = () => {
                     <div data-aos="fade-up">
                         <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
                             <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-
-                                GET MESMERIZED WITH THE FRAGRANCE OF THE SUPERB QUALITY OF SPICES BOUGHT FROM KOOGUL INDUSTRIES FOOD EXPORTS
+                                Get mesmerized with the fragrance of the superb Quality of Spices bought from Koogul Industries food Exports
                             </h1>
                         </div>
 

@@ -69,10 +69,10 @@ const Vegetable: React.FC = () => {
                     <h1 data-aos="fade-up" className="text-center text-white display-6">Vegetables</h1>
                     <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
                         <li className="breadcrumb-item">
-                            <a href="/index.html#">Home</a>
+                            <a href="/" className='text-primary'>Home</a>
                         </li>
                         <li className="breadcrumb-item">
-                            <a href="/#">Pages</a>
+                            <a href="/" className='text-primary'>Pages</a>
                         </li>
                         <li className="breadcrumb-item active text-white">Vegetables</li>
                     </ol>
@@ -83,13 +83,13 @@ const Vegetable: React.FC = () => {
                 <div data-aos="fade-up">
                     <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
                         <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-                            VEGETABLE EXPORTER FROM INDIA
+                            Vegetable Exporter From India
                         </h1>
                     </div>
                 </div>
                 <div data-aos="fade-up">
                     <div className="container-fluid">
-                        <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+                        <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
                             India has a rich and diverse climate. This diversity provides lots of varieties of vegetables. Vegetables are one of the most rapid growing sub-sectors of food processing sector. India currently stands at 2nd position in the world for its production of vegetables. It also holds 3rd position as the net-exporter of vegetables. According to the export value; onion occupies the first position. In the recent years, potatoes and some green vegetables like bitter gourd, okra and green chillies have also shown an increase in their exports.</p>
                     </div>
                 </div>

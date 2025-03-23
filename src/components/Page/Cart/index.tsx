@@ -55,7 +55,7 @@ const Rice = () => {
 
                         <div data-aos="fade-up">
                             <div className="container-fluid">
-                                <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+                                <p className="text-justify p-3 mx-auto" id="p-3" style={{ width: "100%", textAlign: "justify" }}>
                                     At Koogul Industries, we take pride in exporting only the highest quality rice to meet the diverse needs of our global customers. Our commitment to excellence begins with carefully selecting the finest rice varieties from trusted growers. Each grain undergoes rigorous quality checks to ensure it meets our exacting standards.</p>
                             </div>
                         </div>

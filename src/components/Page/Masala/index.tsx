@@ -57,10 +57,10 @@ const Masala: React.FC = () => {
                     <h1 data-aos="fade-up" className="text-center text-white display-6">Masalas</h1>
                     <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
                         <li className="breadcrumb-item">
-                            <a href="/index.html#">Home</a>
+                            <a href="/" className='text-primary'>Home</a>
                         </li>
                         <li className="breadcrumb-item">
-                            <a href="/#">Pages</a>
+                            <a href="/" className='text-primary'>Pages</a>
                         </li>
                         <li className="breadcrumb-item active text-white">Masalas</li>
                     </ol>
@@ -71,13 +71,13 @@ const Masala: React.FC = () => {
                 <div data-aos="fade-up">
                     <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
                         <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-                            PREMIUM MASALA PRODUCTS EXPORTER – EXCELLENCE IN EVERY SPICE
+                            Premium Masala Products Exporter – Excellence in every Spice
                         </h1>
                     </div>
                 </div>
                 <div data-aos="fade-up">
                     <div className="container-fluid">
-                        <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+                        <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
                             Koogul Industries is dedicated to exporting the finest masala products, bringing authentic flavor and quality to kitchens worldwide. We source only the best spices from trusted suppliers, ensuring that each product delivers unmatched freshness, rich aroma, and superior taste. Every batch is meticulously tested for quality and consistency, guaranteeing that our masala products meet the highest international standards. Experience the true essence of spices with Koogul Industries' premium masalas, crafted to elevate every dish.</p>
                     </div>
                 </div>

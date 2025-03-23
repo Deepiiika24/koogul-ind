@@ -61,10 +61,10 @@ const Beeda: React.FC = () => {
                     <h1 data-aos="fade-up" className="text-center text-white display-6">Paan Beeda</h1>
                     <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
                         <li className="breadcrumb-item">
-                            <a href="/index.html#">Home</a>
+                            <a href="/" className='text-primary'>Home</a>
                         </li>
                         <li className="breadcrumb-item">
-                            <a href="/#">Pages</a>
+                            <a href="/" className='text-primary'>Pages</a>
                         </li>
                         <li className="breadcrumb-item active text-white">Paan Beeda</li>
                     </ol>
@@ -75,13 +75,13 @@ const Beeda: React.FC = () => {
                 <div data-aos="fade-up">
                     <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
                         <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-                            PAAN BEEDA EXPORT FROM INDIA
+                            Paan Beeda Export From India
                         </h1>
                     </div>
                 </div>
                 <div data-aos="fade-up">
                     <div className="container-fluid">
-                        <p className="text-justify p-3 mx-auto" style={{ width: "90%", textAlign: "center" }}>
+                        <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
                             India is renowned for its rich tradition of Paan Beeda, a flavorful combination of betel leaves, areca nut, and aromatic spices. As a leading exporter, we ensure premium-quality Paan Beeda is sourced from the finest ingredients and prepared with authentic techniques. Our exports maintain freshness, taste, and hygiene, making them a preferred choice in international markets. Whether for cultural traditions or as a mouth freshener, our Paan Beeda delivers an authentic Indian experience worldwide.</p>
                     </div>
                 </div>

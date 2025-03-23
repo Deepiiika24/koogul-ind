@@ -10,11 +10,11 @@ import Flower1 from '../../../assets/images/pooja/kit1.jpg'
 import Flower2 from '../../../assets/images/pooja/kit2.jpg'
 import Flower3 from '../../../assets/images/pooja/kit3.jpg'
 import Flower4 from '../../../assets/images/pooja/kit4.jpg'
-import Flower5 from '../../../assets/images/pooja/kit4.jpg'
-import Flower6 from '../../../assets/images/pooja/kit5.jpg'
-import Flower7 from '../../../assets/images/pooja/kit6.jpg'
-import Flower8 from '../../../assets/images/pooja/kit7.jpg'
-import Flower9 from '../../../assets/images/pooja/kit8.jpg'
+import Flower5 from '../../../assets/images/pooja/kit5.jpg'
+import Flower6 from '../../../assets/images/pooja/kit6.jpg'
+import Flower7 from '../../../assets/images/pooja/kit7.jpg'
+import Flower8 from '../../../assets/images/pooja/kit8.jpg'
+import Flower9 from '../../../assets/images/pooja/kit9.jpg'
 import brass1 from '../../../assets/images/pooja/kalash.jpg'
 import brass2 from '../../../assets/images/pooja/bell.jpg'
 import brass3 from '../../../assets/images/pooja/kunkumthattu.jpg'
@@ -198,13 +198,13 @@ const Pooja: React.FC = () => {
         <div data-aos="fade-up">
           <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
             <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-              POOJA PRODUCT EXPORT FROM INDIA
+              Pooja Product Export From India
             </h1>
           </div>
         </div>
         <div data-aos="fade-up">
           <div className="container-fluid">
-            <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "center" }}>
+            <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
               Koogul Industries Pooja Products encompass a range of meticulously crafted items that are essential for performing rituals and ceremonies. These products are designed to enhance the spiritual experience and create an atmosphere of devotion and reverence. Our Pooja Products offer a wide variety of items, including ghee diya, sambrani cups, chandan tika, camphor, kapoor, hawan samagri, puja oils, and more.</p>
           </div>
         </div>
