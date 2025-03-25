@@ -12,6 +12,7 @@ import useCountAnimation from '../../useCountAnimation'
 import Shipping from '../../assets/images/Shipping.jpg'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from 'react-router-dom'
 
 const Products: React.FC = () => {
 
@@ -52,6 +53,12 @@ const Products: React.FC = () => {
       once: true,
     });
   }, []);
+
+  const navigate = useNavigate(); // useNavigate hook for navigation
+
+  const redirectTo = (path: string) => {
+    navigate(`/${path}`); // Simplified navigation
+  };
 
   return (
 
@@ -106,7 +113,7 @@ const Products: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title text-primary">FLOWER</h5>
                 <p className='card-text' style={{ textAlign: "justify" }}>We offer a wide variety of fresh flowers for all your special occasions, whether it’s weddings, festivals, or any celebration.</p>
-                <button className='btn text-primary'>See More <i className="bi bi-arrow-right-circle-fill"></i> </button>
+                <button className='btn text-primary' onClick={() => redirectTo('flower')}>See More <i className="bi bi-arrow-right-circle-fill"></i> </button>
               </div>
             </div>
           </Col>
@@ -116,7 +123,7 @@ const Products: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title text-primary">POOJA PRODUCTS</h5>
                 <p className='card-text' style={{ textAlign: "justify" }}>Our pooja products include everything you need for religious rituals, from incense to idols and offerings, all of the highest quality.</p>
-                <button className='btn text-primary'>See More <i className="bi bi-arrow-right-circle-fill"></i> </button>
+                <button className='btn text-primary' onClick={() => redirectTo('Pooja')}>See More <i className="bi bi-arrow-right-circle-fill"></i> </button>
               </div>
             </div>
           </Col>
@@ -126,7 +133,7 @@ const Products: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title text-primary">RICE</h5>
                 <p className='card-text' style={{ textAlign: "justify" }}>We offer a variety of rice for all your needs. Whether for daily meals or special occasions, enjoy the finest grains with great taste and quality.</p>
-                <button className='btn text-primary'>See More <i className="bi bi-arrow-right-circle-fill"></i> </button>
+                <button className='btn text-primary' onClick={() => redirectTo('rice')}>See More <i className="bi bi-arrow-right-circle-fill"></i> </button>
               </div>
             </div>
           </Col>
@@ -136,7 +143,7 @@ const Products: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title text-primary">SPICES</h5>
                 <p className='card-text' style={{ textAlign: "justify" }}>Add rich flavor to your meals with our premium spices, perfect for any dish, bringing aroma and taste to your kitchen.</p>
-                <button className='btn text-primary'>See More <i className="bi bi-arrow-right-circle-fill"></i> </button>
+                <button className='btn text-primary' onClick={() => redirectTo('spices')}>See More <i className="bi bi-arrow-right-circle-fill"></i> </button>
               </div>
             </div>
           </Col>
