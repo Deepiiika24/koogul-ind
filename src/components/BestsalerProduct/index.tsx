@@ -33,11 +33,11 @@ const BestsalerProduct: React.FC = () => {
       <div className="container py-5">
       <div data-aos="fade-up">
         <div className="text-center mx-auto mb-5" style={{ maxWidth: 700 }}>
-          <h1 className="display-4" id='py-5' style={{paddingTop:"0rem"}}>Bestseller Products</h1>
-          <p id='py-5'>
+          <h1 className="display-4" id='py-5' style={{paddingTop:"0rem"}}>Best seller Products</h1>
+          {/* <p id='py-5'>
             Latin words, combined with a handful of model sentence structures, to
             generate Lorem Ipsum which looks reasonable.
-          </p>
+          </p> */}
         </div>
         </div>
         <div data-aos="fade-up">

@@ -73,7 +73,7 @@ const Contact: React.FC = () => {
                   <div className="h-100 rounded">
                     <iframe
                       className="rounded w-100"
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12577.829405082637!2d145.18292726064897!3d-37.98979144669541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6138b0956e77d%3A0x7ec2b49b0f1ec698!2s1%2F93B%20Cheltenham%20Rd%2C%20Dandenong%20VIC%203175%2C%20Australia!5e0!3m2!1sen!2sin!4v1741263082598!5m2!1sen!2sin"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.293323453225!2d80.14606327330429!3d13.016983613885222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5260f13296fe4d%3A0x1a506dad336b8b0!2s11%2C%20MRK%20Nagar%20Main%20Rd%2C%20Maxworth%20Nagar%20Phase%20II%2C%20Kolapakkam%2C%20Chennai%2C%20Tamil%20Nadu%20600125!5e0!3m2!1sen!2sin!4v1742884480049!5m2!1sen!2sin"
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                     />
@@ -117,7 +117,7 @@ const Contact: React.FC = () => {
                   <div className="d-flex p-4 rounded mb-4 bg-white" data-aos="fade-up">
                     <i className="fas fa-map-marker-alt fa-2x text-primary me-4" />
                     <div>
-                      <p className="mb-2">Level 1, 93B Cheltenham Road, Dandenong, Victoria 3175, Australia</p>
+                      <p className="mb-2">Address: No:11, M.R.K Nagar, 50feet Main Road, Kolapakkam, Chennai-600128, Tamil Nadu, India</p>
                     </div>
                   </div>
                   <div className="d-flex p-4 rounded mb-4 bg-white" data-aos="fade-up">

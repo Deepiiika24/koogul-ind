@@ -161,7 +161,7 @@ const Footer: React.FC = () => {
                 <p>Address: No:11, M.R.K Nagar, 50feet Main Road, Kolapakkam, Chennai-600128, Tamil Nadu, India</p>
                 <p>Email: koogulinfo@gmail.com</p>
                 <p>Phone: +91 6374980568</p>
-                <p>Payment Accepted</p>
+                {/* <p>Payment Accepted</p> */}
                 {/* <img src={payment} className="img-fluid" alt="Payment Methods" /> */}
               </div>
             </div>

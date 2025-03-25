@@ -12,7 +12,7 @@ const Copyright: React.FC = () => {
               <span className="text-light">
                 <a href="/public#">
                   <i className="fas fa-copyright text-light me-2" />
-                  Your Site Name
+                  Koogul Industries
                 </a>
                 , All right reserved.
               </span>
