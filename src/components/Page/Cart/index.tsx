@@ -5,381 +5,149 @@ import SinglePageHeader from "./SinglePageHeader"
 import { useAppDispatch, useAppSelector } from "../../../app/hooks"
 import type { RootState } from "../../../app/store"
 import { decrementQuantity, incrementQuantity, initItems, removeItem } from "../../../features/cart/cartSlice"
-import rice1 from '../../../assets/images/rice/Matta-Rice.png'
-import rice2 from '../../../assets/images/rice/Basmati-rice.jpg'
-import rice3 from '../../../assets/images/rice/Boiled-Rice.jpg'
-import rice4 from '../../../assets/images/rice/Idli-rice.jpg'
-import rice5 from '../../../assets/images/rice/Red-raw-rice.jpg'
-import rice6 from '../../../assets/images/rice//Seeraga-samba.jpg'
-import rice7 from '../../../assets/images/rice/White-raw-rice.jpg'
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { Link } from "react-router-dom"
+import vegetableitem3 from "../../../assets/images/vegetable-item-3.png"
+import vegetableitem5 from "../../../assets/images/vegetable-item-5.jpg"
+import vegetableitem2 from "../../../assets/images/vegetable-item-2.jpg"
 
 const initialItems = [
-
+  { id: 1000, name: "Big Banana", price: 2.99, quantity: 1, img: vegetableitem3 },
+  { id: 2000, name: "Potatoes", price: 2.99, quantity: 1, img: vegetableitem5 },
+  { id: 3000, name: "Awesome Broccoli", price: 2.99, quantity: 1, img: vegetableitem2 }
 ]
-const Rice = () => {
-    useEffect(() => {
-        AOS.init({
-            duration: 1000, // Animation duration in milliseconds
-            easing: "ease-in-out", // Animation easing
-
-        });
-    }, []);
-    const dispatch = useAppDispatch()
-
-    const { items, shipping } = useAppSelector((state: RootState) => state.cart)
-    const subtotal = items.reduce((total, item) => total + item.price * item.quantity, 0)
-    const total = subtotal + shipping
-    const [initi, setIniti] = useState(false)
-    useEffect(() => {
-        if (!initi) {
-            console.log("initialItems")
-            setIniti(true)
-        }
-    }, [initi])
-    return (
-        <>
-            <Header />
-            <SinglePageHeader />
-            <div>
-
-                <div className='container'>
-                    <div data-aos="fade-up">
-                        <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
-                            <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-                                we export premium quality rice, ensuring excellence in every grain
-                            </h1>
-                        </div>
-
-                        <div data-aos="fade-up">
-                            <div className="container-fluid">
-                                <p className="text-justify p-3 mx-auto" id="p-3" style={{ width: "100%", textAlign: "justify" }}>
-                                    At Koogul Industries, we take pride in exporting only the highest quality rice to meet the diverse needs of our global customers. Our commitment to excellence begins with carefully selecting the finest rice varieties from trusted growers. Each grain undergoes rigorous quality checks to ensure it meets our exacting standards.</p>
-                            </div>
-                        </div>
+const Cart = () => {
+  const dispatch = useAppDispatch()
+  //list_items.map(item => dispatch(addItem(item)))
+  //dispatch(addItem(list_items[0]))
+  const { items, shipping } = useAppSelector((state: RootState) => state.cart)
+  const subtotal = items.reduce((total, item) => total + item.price * item.quantity, 0)
+  const total = subtotal + shipping
+  const [initi, setIniti] = useState(false)
+  useEffect(() => {
+    if (!initi) {
+      console.log("initialItems")
+      //  dispatch(initItems(initialItems))
+      setIniti(true)
+    }
+  }, [initi])
+  return (
+    <>
+      <Header />
+      <SinglePageHeader />
+      <div className="container-fluid py-5">
+        <div className="container py-5">
+          <div className="table-responsive">
+            <table className="table">
+              <thead>
+              <tr>
+                <th scope="col">Products</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Handle</th>
+              </tr>
+              </thead>
+              <tbody>
+              {items.map(item => (
+                <tr key={item.id}>
+                  <th scope="row">
+                    <div className="d-flex align-items-center">
+                      <img
+                        src={item.img}
+                        className="img-fluid me-5 rounded-circle"
+                        style={{ width: 80, height: 80 }}
+                        alt={item.name}
+                      />
                     </div>
-                    <div data-aos="fade-up">
-                        <div className="bg-light p-5 rounded">
-                            <div className="row g-4 justify-content-center">
-                                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                                    <div
-                                        className="rounded position-relative fruite-item"
-                                        style={{
-                                            overflow: 'hidden',
-                                            transition: 'box-shadow 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 8px 26px rgba(0, 0, 0, 0.4)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.1)';
-                                        }}
-                                    >
-                                        <div className="fruite-img overflow-hidden">
-                                            <img
-                                                src={rice1}
-                                                className="img-fluid w-100 rounded-top"
-                                                alt=""
-                                                style={{
-                                                    transition: 'transform 0.4s ease'
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1.1)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1)';
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Rice
-                                        </div>
-                                        <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
-                                            <h4 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    <Link to="/Rice/Matta-rice">
-                                                        Matta Rice
-                                                    </Link>
-                                                </a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                                    <div
-                                        className="rounded position-relative fruite-item"
-                                        style={{
-                                            overflow: 'hidden',
-                                            transition: 'box-shadow 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 8px 26px rgba(0, 0, 0, 0.4)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.1)';
-                                        }}
-                                    >
-                                        <div className="fruite-img overflow-hidden">
-                                            <img
-                                                src={rice2}
-                                                className="img-fluid w-100 rounded-top"
-                                                alt=""
-                                                style={{
-                                                    transition: 'transform 0.4s ease'
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1.1)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1)';
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Rice
-                                        </div>
-                                        <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
-                                            <h4 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    <Link to="/Rice/Basmati-Rice">
-                                                        Basmati Rice
-                                                    </Link>
-                                                </a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                                    <div
-                                        className="rounded position-relative fruite-item"
-                                        style={{
-                                            overflow: 'hidden',
-                                            transition: 'box-shadow 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 8px 26px rgba(0, 0, 0, 0.4)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.1)';
-                                        }}
-                                    >
-                                        <div className="fruite-img overflow-hidden">
-                                            <img
-                                                src={rice3}
-                                                className="img-fluid w-100 rounded-top"
-                                                alt=""
-                                                style={{
-                                                    transition: 'transform 0.4s ease'
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1.1)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1)';
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Rice
-                                        </div>
-                                        <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
-                                            <h4 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    <Link to="/Rice/Boiled-Rice">
-                                                        Boiled Rice
-                                                    </Link>
-                                                </a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                                    <div
-                                        className="rounded position-relative fruite-item"
-                                        style={{
-                                            overflow: 'hidden',
-                                            transition: 'box-shadow 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 8px 26px rgba(0, 0, 0, 0.4)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.1)';
-                                        }}
-                                    >
-                                        <div className="fruite-img overflow-hidden">
-                                            <img
-                                                src={rice4}
-                                                className="img-fluid w-100 rounded-top"
-                                                alt=""
-                                                style={{
-                                                    transition: 'transform 0.4s ease'
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1.1)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1)';
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Rice
-                                        </div>
-                                        <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
-                                            <h4 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    <Link to="/Rice/Idly-Rice">
-                                                        Idly Rice
-                                                    </Link>
-                                                </a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                                    <div
-                                        className="rounded position-relative fruite-item"
-                                        style={{
-                                            overflow: 'hidden',
-                                            transition: 'box-shadow 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 8px 26px rgba(0, 0, 0, 0.4)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.1)';
-                                        }}
-                                    >
-                                        <div className="fruite-img overflow-hidden">
-                                            <img
-                                                src={rice5}
-                                                className="img-fluid w-100 rounded-top"
-                                                alt=""
-                                                style={{
-                                                    transition: 'transform 0.4s ease'
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1.1)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1)';
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Rice
-                                        </div>
-                                        <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
-                                            <h4 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    <Link to="/Rice/Red-Rice">
-                                                        Red Raw Rice
-                                                    </Link>
-                                                </a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                                    <div
-                                        className="rounded position-relative fruite-item"
-                                        style={{
-                                            overflow: 'hidden',
-                                            transition: 'box-shadow 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 8px 26px rgba(0, 0, 0, 0.4)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.1)';
-                                        }}
-                                    >
-                                        <div className="fruite-img overflow-hidden">
-                                            <img
-                                                src={rice6}
-                                                className="img-fluid w-100 rounded-top"
-                                                alt=""
-                                                style={{
-                                                    transition: 'transform 0.4s ease'
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1.1)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1)';
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Rice
-                                        </div>
-                                        <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
-                                            <h4 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    <Link to="/Rice/Seeragasamba-Rice">
-                                                        Seeraga Samba
-                                                    </Link>
-                                                </a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                                    <div
-                                        className="rounded position-relative fruite-item"
-                                        style={{
-                                            overflow: 'hidden',
-                                            transition: 'box-shadow 0.3s ease',
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 8px 26px rgba(0, 0, 0, 0.4)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.1)';
-                                        }}
-                                    >
-                                        <div className="fruite-img overflow-hidden">
-                                            <img
-                                                src={rice7}
-                                                className="img-fluid w-100 rounded-top"
-                                                alt=""
-                                                style={{
-                                                    transition: 'transform 0.4s ease'
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1.1)';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.transform = 'scale(1)';
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Rice
-                                        </div>
-                                        <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
-                                            <h4 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
-                                                    <Link to="/Rice/White-Rice">
-                                                        White Raw Rice
-                                                    </Link>
-                                                </a></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                  </th>
+                  <td>
+                    <p className="mb-0 mt-4">{item.name}</p>
+                  </td>
+                  <td>
+                    <p className="mb-0 mt-4">${item.price.toFixed(2)}</p>
+                  </td>
+                  <td>
+                    <div className="input-group quantity mt-4" style={{ width: 100 }}>
+                      <div className="input-group-btn">
+                        <button className="btn btn-sm btn-minus rounded-circle bg-light border"
+                                onClick={() => dispatch(decrementQuantity(item.id))}>
+                          <i className="fa fa-minus" />
+                        </button>
+                      </div>
+                      <input
+                        type="text"
+                        className="form-control form-control-sm text-center border-0"
+                        value={item.quantity}
+                        readOnly
+                      />
+                      <div className="input-group-btn">
+                        <button className="btn btn-sm btn-plus rounded-circle bg-light border"
+                                onClick={() => dispatch(incrementQuantity(item.id))}>
+                          <i className="fa fa-plus" />
+                        </button>
+                      </div>
                     </div>
+                  </td>
+                  <td>
+                    <p className="mb-0 mt-4">${(item.price * item.quantity).toFixed(2)}</p>
+                  </td>
+                  <td>
+                    <button className="btn btn-md rounded-circle bg-light border mt-4"
+                            onClick={() => dispatch(removeItem(item.id))}>
+                      <i className="fa fa-times text-danger" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-5">
+            <input
+              type="text"
+              className="border-0 border-bottom rounded me-5 py-3 mb-4"
+              placeholder="Coupon Code"
+            />
+            <button className="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">
+              Apply Coupon
+            </button>
+          </div>
+          <div className="row g-4 justify-content-end">
+            <div className="col-8" />
+            <div className="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+              <div className="bg-light rounded">
+                <div className="p-4">
+                  <h1 className="display-6 mb-4">
+                    Cart <span className="fw-normal">Total</span>
+                  </h1>
+                  <div className="d-flex justify-content-between mb-4">
+                    <h5 className="mb-0 me-4">Subtotal:</h5>
+                    <p className="mb-0">${subtotal.toFixed(2)}</p>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <h5 className="mb-0 me-4">Shipping</h5>
+                    <div className="">
+                      <p className="mb-0">Flat rate: ${shipping.toFixed(2)}</p>
+                    </div>
+                  </div>
+                  <p className="mb-0 text-end">Shipping to Ukraine.</p>
                 </div>
+                <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                  <h5 className="mb-0 ps-4 me-4">Total</h5>
+                  <p className="mb-0 pe-4">${total.toFixed(2)}</p>
+                </div>
+                <button className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
+                        type="button">
+                  Proceed Checkout
+                </button>
+              </div>
             </div>
-            <Footer />
-        </>
-    )
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  )
 }
 
-export default Rice
+export default Cart

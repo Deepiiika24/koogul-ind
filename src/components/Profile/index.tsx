@@ -11,6 +11,7 @@ const Profile: React.FC = () => {
   const user = useAppSelector((state) => state.login.user)
 
   useEffect(() => {
+    console.log("Token:", token);
     if (token) {
       dispatch(fetchCurrentUser(token))
     } else {
@@ -19,11 +20,19 @@ const Profile: React.FC = () => {
   }, [token, dispatch])
   const handleLogout = () => {
     dispatch(logout())
-    navigate("/login")
+    setTimeout(() => {
+      navigate("/login");
+    }, 500);
   }
   if (!user) {
-    return <p>Loading...</p>
+    return (
+      <div className="container mt-5">
+        <p>Loading...</p>
+        <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
+      </div>
+    );
   }
+
 
   return (
     <div className="container mt-5">

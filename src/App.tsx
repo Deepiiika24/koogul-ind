@@ -7,7 +7,6 @@ import Home from "./components/Home"
 import Head from "./components/Head"
 import Shop from "./components/Shop"
 import Contact from "./components/Contact"
-import Cart from "./components/Page/Cart"
 import Products from "./components/Products"
 import ProductDetail from "./components/ProductDetail"
 import store from "./app/store"
@@ -185,7 +184,7 @@ import Clove from "./components/Spices/Clove"
 import MustardSeed from "./components/Spices/MustardSeed"
 import BayLeaf from "./components/Spices/BayLeaf"
 import Turmeric from "./components/Spices/Turmeric"
-import Ginger from "./components/Spices/Ginger"
+import Sukku from "./components/Spices/Sukku"
 import StarAnise from "./components/Spices/StarAnise"
 import Cinamon from "./components/Spices/Cinamon"
 import Nutmeg from "./components/Spices/Nutmeg"
@@ -208,6 +207,8 @@ import UradDalFlour from "./components/Flour/UradDalFlour"
 import RedRiceRoastedFlour from "./components/Flour/RedRiceRoastedFlour"
 import MoongDalRoastedFlour from "./components/Flour/MoongDalRoastedFlour"
 import UradRoastedFlour from "./components/Flour/UradRoastedFlour"
+import Rice from "./components/Page/Rice"
+import Cart from "./components/Page/Cart"
 
 const App = () => (
   <Provider store={store}>
@@ -219,6 +220,15 @@ const App = () => (
             <>
               <Head title="Home | Koogul Industries " />
               <Home />
+            </>
+          )}
+        />
+        <Route
+          path="/cart"
+          element={(
+            <>
+              <Head title="Cart | Koogul Industries" />
+              <Cart />
             </>
           )}
         />
@@ -263,7 +273,7 @@ const App = () => (
           element={(
             <>
               <Head title="Rice | Koogul Industries" />
-              <Cart />
+              <Rice />
             </>
           )}
         />
@@ -385,11 +395,11 @@ const App = () => (
           )}
         />
         <Route
-          path="/spices/ginger"
+          path="/spices/sukku"
           element={(
             <>
-              <Head title="Ginger | Koogul Industries" />
-              <Ginger />
+              <Head title="Dry Ginger | Koogul Industries" />
+              <Sukku />
             </>
           )}
         />

@@ -33,7 +33,7 @@ const NaviBar: React.FC = () => {
         <ToggleButton />
         <Navbar.Collapse id="navbarCollapse">
           <NavigationLinks activeLink={activeLink} />
-          {/* <AdditionalActions /> */}
+          <AdditionalActions />
         </Navbar.Collapse>
       </Navbar>
     </ContextModalSearch.Provider>

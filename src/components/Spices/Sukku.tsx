@@ -8,12 +8,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
-const Ginger: React.FC = () => {
+const Sukku: React.FC = () => {
     const navigate = useNavigate();
     const product = {
         image: rice1,
-        title: 'Ginger Exporters',
-        description: 'Turmeric powder has a warm, bitter, black pepper-like flavor and earthy, mustard-like aroma.Curcumin, a bright yellow chemical produced by the turmeric plant, is approved as a food additive by the World Health Organization, European Parliament, and United States Food and Drug Administration. Although long used in Ayurvedic medicine, there is no high-quality clinical evidence that consuming turmeric or curcumin is effective for treating any disease.',
+        title: 'Dry Ginger Exporters',
+        description: 'Dry ginger, also known as Sukku, is a dehydrated form of fresh ginger with a strong, spicy flavor and a warm, earthy aroma. It is widely used in culinary applications, herbal remedies, and traditional medicine. Dry ginger is rich in bioactive compounds like gingerol, which contribute to its anti-inflammatory and digestive benefits. Although commonly used in Ayurvedic and traditional medicine, there is no high-quality clinical evidence proving its effectiveness in treating specific diseases.',
         details: [
             { name: 'Energy', quantity: '', subName: '' },
             { name: 'Protein', quantity: '', subName: '' },
@@ -92,4 +92,4 @@ const Ginger: React.FC = () => {
     );
 };
 
-export default Ginger;
+export default Sukku;

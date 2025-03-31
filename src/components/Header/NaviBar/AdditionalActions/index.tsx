@@ -17,7 +17,7 @@ const AdditionalActions: React.FC = () => {
   }
   const handleGoCart = (e: React.MouseEvent) => {
     e.preventDefault()
-    navigate("/cart")
+    navigate("/")
   }
   const handleGoUser = (e: React.MouseEvent) => {
     e.preventDefault()

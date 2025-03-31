@@ -10,7 +10,7 @@ import spices2 from '../../../assets/images/spices/clove.jpg'
 import spices3 from '../../../assets/images/spices/mustard.jpg'
 import spices4 from '../../../assets/images/spices/bayleaf.jpg'
 import spices5 from '../../../assets/images/spices/turmeric.jpg'
-import spices6 from '../../../assets/images/spices/ginger.jpg'
+import spices6 from '../../../assets/images/spices/sukku.jpg'
 import spices7 from '../../../assets/images/spices/star.jpg'
 import spices8 from '../../../assets/images/spices/cinnamon.jpg'
 import spices9 from '../../../assets/images/spices/nutmeg.jpg'
@@ -37,26 +37,26 @@ interface SpicesItem {
 }
 
 const spicesData: SpicesItem[] = [
-    { id: 1, name: "Garlic", image: spices1, path: "/spices/garlic" },
-    { id: 2, name: "Clove", image: spices2, path: "/spices/clove" },
-    { id: 3, name: "Mustard Seeds", image: spices3, path: "/spices/mustard-seeds" },
-    { id: 4, name: "Bay-leaf", image: spices4, path: "/spices/bay-leaf" },
-    { id: 5, name: "Turmeric", image: spices5, path: "/spices/turmeric" },
-    { id: 6, name: "Ginger", image: spices6, path: "/spices/ginger" },
-    { id: 7, name: "Star-anise", image: spices7, path: "/spices/star-anise" },
-    { id: 8, name: "Cinnamon", image: spices8, path: "/spices/cinnamon" },
-    { id: 9, name: "Nutmeg", image: spices9, path: "/spices/nutmeg" },
-    { id: 10, name: "Cumin", image: spices10, path: "/spices/cumin" },
-    { id: 11, name: "Black pepper", image: spices11, path: "/spices/black-pepper" },
-    { id: 12, name: "Red chilli", image: spices12, path: "/spices/red-chilli" },
-    { id: 13, name: "Coriander", image: spices13, path: "/spices/coriander" },
-    { id: 14, name: "Carom seeds", image: spices14, path: "/spices/carom-seeds" },
-    { id: 15, name: "Mace", image: spices15, path: "/spices/mace" },
-    { id: 16, name: "Poppy seed", image: spices16, path: "/spices/poppy-seed" },
-    { id: 17, name: "Green Cardamom", image: spices17, path: "/spices/green-cardamom" },
-    { id: 18, name: "Peppercorns", image: spices18, path: "/spices/pepper-corns" },
-    { id: 19, name: "Brown cardamam", image: spices19, path: "/spices/brown-cardamam" },
-    { id: 20, name: "Saffron", image: spices20, path: "/spices/saffron" },
+    // { id: 1, name: "Garlic", image: spices1, path: "/spices/garlic" },
+    { id: 1, name: "Clove", image: spices2, path: "/spices/clove" },
+    { id: 2, name: "Mustard Seeds", image: spices3, path: "/spices/mustard-seeds" },
+    { id: 3, name: "Bay-leaf", image: spices4, path: "/spices/bay-leaf" },
+    { id: 4, name: "Turmeric", image: spices5, path: "/spices/turmeric" },
+    { id: 5, name: "Dry Ginger", image: spices6, path: "/spices/sukku" },
+    { id: 6, name: "Star-anise", image: spices7, path: "/spices/star-anise" },
+    { id: 7, name: "Cinnamon", image: spices8, path: "/spices/cinnamon" },
+    { id: 8, name: "Nutmeg", image: spices9, path: "/spices/nutmeg" },
+    { id: 9, name: "Cumin", image: spices10, path: "/spices/cumin" },
+    { id: 10, name: "Black pepper", image: spices11, path: "/spices/black-pepper" },
+    { id: 11, name: "Red chilli", image: spices12, path: "/spices/red-chilli" },
+    { id: 12, name: "Coriander", image: spices13, path: "/spices/coriander" },
+    { id: 13, name: "Carom seeds", image: spices14, path: "/spices/carom-seeds" },
+    { id: 14, name: "Mace", image: spices15, path: "/spices/mace" },
+    { id: 15, name: "Poppy seed", image: spices16, path: "/spices/poppy-seed" },
+    { id: 16, name: "Green Cardamom", image: spices17, path: "/spices/green-cardamom" },
+    { id: 17, name: "Peppercorns", image: spices18, path: "/spices/pepper-corns" },
+    { id: 18, name: "Brown cardamam", image: spices19, path: "/spices/brown-cardamam" },
+    { id: 19, name: "Saffron", image: spices20, path: "/spices/saffron" },
 ];
 const Spices = () => {
     useEffect(() => {

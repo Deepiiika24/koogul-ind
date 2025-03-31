@@ -223,6 +223,14 @@ color: rgba(11, 11, 11, 0.918);
     margin-left: 20px;
 }
 
+.cart-header {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(assets/images/cart-header.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .page-header {
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(assets/images/Rice-banner.png);
@@ -261,14 +269,14 @@ color: rgba(11, 11, 11, 0.918);
 
 @media (min-width: 992px) {
     .hero-header,
-    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header {
+    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header,.cart-header {
         margin-top: 152px !important;
     }
 }
 
 @media (max-width: 992px) {
     .hero-header,
-    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header {
+    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header,.cart-header {
         margin-top: 97px !important;
     }
 }
