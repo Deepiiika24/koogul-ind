@@ -144,7 +144,7 @@ color: rgba(11, 11, 11, 0.918);
     content: "\f107";
     font-family: "Font Awesome 5 Free";
     font-weight: 700;
-
+    margin-top: 2px;
     vertical-align: middle;
     margin-left: 8px;
 }
@@ -269,14 +269,14 @@ color: rgba(11, 11, 11, 0.918);
 
 @media (min-width: 992px) {
     .hero-header,
-    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header,.cart-header {
+    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header,.cart-header,.login-banner {
         margin-top: 152px !important;
     }
 }
 
 @media (max-width: 992px) {
     .hero-header,
-    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header,.cart-header {
+    .page-header,.page-banner,.pooja-banner,.spices-banner,.Flour-banner,.rice-header,.cart-header,.login-banner {
         margin-top: 97px !important;
     }
 }

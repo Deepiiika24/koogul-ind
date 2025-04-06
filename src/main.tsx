@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client"
 import App from "./App"
 import "./index.css"
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from "./AuthContext";
 const container = document.getElementById("root")
 
 if (container) {
@@ -10,7 +12,9 @@ if (container) {
 
   root.render(
     <React.StrictMode>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </React.StrictMode>
   )
 } else {

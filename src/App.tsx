@@ -209,9 +209,12 @@ import MoongDalRoastedFlour from "./components/Flour/MoongDalRoastedFlour"
 import UradRoastedFlour from "./components/Flour/UradRoastedFlour"
 import Rice from "./components/Page/Rice"
 import Cart from "./components/Page/Cart"
+import LoginRegister from "./components/LoginRegister"
+import { ToastContainer } from "react-toastify"
 
 const App = () => (
   <Provider store={store}>
+    <ToastContainer position="top-right" autoClose={3000} />
     <BrowserRouter>
       <Routes>
         <Route
@@ -1995,6 +1998,15 @@ const App = () => (
               <Header />
               <LoginForm />
               <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/LoginRegitser"
+          element={
+            <>
+              <Head title="User Register | Koogul Industries" />
+              <LoginRegister />
             </>
           }
         />

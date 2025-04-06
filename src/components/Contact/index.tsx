@@ -2,22 +2,41 @@
 import type React from 'react'
 import Header from '../Header'
 import Footer from '../Footer'
-import sendEmail from '../../emailService'
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Contact: React.FC = () => {
 
   const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<string | null>(null);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (formRef.current) {
-      sendEmail(formRef.current);
-      formRef.current.reset();
+    if (!formRef.current) return;
+
+    const formData = new FormData(formRef.current);
+    const formObject = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formObject),
+      });
+
+      if (response.ok) {
+        alert("Your enquiry has been sent successfully.");
+        formRef.current.reset();
+      } else {
+        alert("Failed to send your enquiry. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong!");
     }
   };
+
 
   useEffect(() => {
     AOS.init({
@@ -62,7 +81,7 @@ const Contact: React.FC = () => {
             <div className="p-5 bg-light rounded" id='p-5'>
               <div className="row g-4">
                 <div className="col-12">
-                  <div className="mx-auto" style={{ maxWidth: 700, textAlign:"justify" }}>
+                  <div className="mx-auto" style={{ maxWidth: 700, textAlign: "justify" }}>
                     <h1 className="text-primary text-center" data-aos="fade-up">Get in touch</h1>
                     <p className="mb-4" data-aos="fade-up">
                       We’d love to hear from you! Whether you have a question about our products, orders, delivery, or anything else, our team is ready to help.
@@ -112,6 +131,7 @@ const Contact: React.FC = () => {
                       Submit
                     </button>
                   </form>
+                  {status && <p className="text-success mt-3">{status}</p>}
                 </div>
                 <div className="col-lg-5">
                   <div className="d-flex p-4 rounded mb-4 bg-white" data-aos="fade-up">
