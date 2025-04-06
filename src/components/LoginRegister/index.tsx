@@ -58,6 +58,7 @@ const LoginRegister: React.FC = () => {
           password,
           confirmPassword,
         });
+        console.log("Response:", response)
         setSuccess("Signup successful! Please log in.");
         toast.success("Signup successful! Please log in.Signup successful! Please log in.");
         setIsLogin(true);
@@ -72,10 +73,10 @@ const LoginRegister: React.FC = () => {
     <>
       <Header />
       <Container fluid className="d-flex justify-content-center align-items-center vh-100 login-banner">
-        <Row className="shadow-lg rounded-3 overflow-hidden w-75">
+        <Row className="rounded-3 overflow-hidden">
           {/* Left Side - Form */}
-          <Col md={6} className="p-5 bg-white d-flex flex-column justify-content-center">
-            <Card className="border-0" style={{ width: "23rem", padding: "20px" }}>
+          <Col xs={12} md={6} id="p-5" className="p-5 bg-white d-flex flex-column justify-content-center">
+            <Card className="border-0" id="cardResponsive">
               <h3 className="text-center fw-bold mb-3">{isLogin ? "Log In" : "Sign Up"}</h3>
               <p className="text-center text-muted">Welcome back! Please enter your details</p>
 
@@ -153,12 +154,12 @@ const LoginRegister: React.FC = () => {
           </Col>
 
           {/* Right Side - Image */}
-          <Col md={6} className="p-0 d-none d-md-block">
+          <Col xs={12} md={6} className="p-0 d-none d-md-block hide-below-425">
             <img
               src={login1}
               alt="Login Illustration"
-              className="img-fluid w-100 h-100"
-              style={{ objectFit: "cover" }}
+              className="img-fluid w-100"
+              style={{ objectFit: "cover", height:"-webkit-fill-available" }}
             />
           </Col>
         </Row>
