@@ -137,7 +137,7 @@ const Flower: React.FC = () => {
         {/* Single Page Header start */}
         <div className="container-fluid py-5"
           style={{
-            marginTop: "152px",
+            marginTop: "102px",
             position: "relative",
             backgroundImage: `url(https://img.freepik.com/free-photo/top-view-pink-lilies-red-surface_141793-17915.jpg)`,
             backgroundSize: "cover",

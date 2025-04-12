@@ -48,7 +48,7 @@ const Oil: React.FC = () => {
         {/* Single Page Header start */}
         <div className="container-fluid py-5"
           style={{
-            marginTop: "152px",
+            marginTop: "102px",
             position: "relative",
             backgroundImage: `url(${oil}`,
             backgroundSize: "cover",

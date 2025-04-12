@@ -49,7 +49,7 @@ const Beeda: React.FC = () => {
                 {/* Single Page Header start */}
                 <div className="container-fluid py-5"
                     style={{
-                        marginTop: "152px",
+                        marginTop: "102px",
                         position: "relative",
                         backgroundImage: `url(https://img.freepik.com/premium-photo/happy-dussehra-yellow-flowers-green-leaf-rice-red-background_53476-6139.jpg)`,
                         backgroundSize: "cover",

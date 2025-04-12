@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
         {/* Single Page Header start */}
         <div className="container-fluid py-5"
           style={{
-            marginTop: "152px",
+            marginTop: "102px",
             position: "relative",
             backgroundImage: `url(https://img.freepik.com/premium-photo/contact-us-wood-cube-symbol-chat-mail-address-mobile-phone-website-page-contact-us-symbols-different-communication-channels-customer_256259-2855.jpg)`,
             backgroundSize: "cover",

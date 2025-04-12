@@ -45,7 +45,7 @@ const Masala: React.FC = () => {
                 {/* Single Page Header start */}
                 <div className="container-fluid py-5"
                     style={{
-                        marginTop: "152px",
+                        marginTop: "102px",
                         position: "relative",
                         backgroundImage: `url(https://img.freepik.com/premium-photo/indian-spices_849688-7379.jpg)`,
                         backgroundSize: "cover",

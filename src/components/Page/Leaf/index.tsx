@@ -61,7 +61,7 @@ const Leaf: React.FC = () => {
         {/* Single Page Header start */}
         <div className="container-fluid py-5"
           style={{
-            marginTop: "152px",
+            marginTop: "102px",
             position: "relative",
             backgroundImage: `url(https://img.freepik.com/premium-photo/close-up-yellow-leaves-against-orange-background_1048944-14526017.jpg)`,
             backgroundSize: "cover",

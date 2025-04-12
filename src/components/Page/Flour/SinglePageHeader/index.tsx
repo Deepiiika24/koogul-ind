@@ -13,7 +13,7 @@ const SinglePageHeader: React.FC = () => {
   return (
     <div className="container-fluid py-5"
     style={{
-      marginTop: "152px",
+      marginTop: "102px",
       position: "relative",
       backgroundImage: `url(https://img.freepik.com/premium-photo/bowl-flour-sits-wooden-table-loaf-bread-some-wheat_99233-16095.jpg)`,
       backgroundSize: "cover",

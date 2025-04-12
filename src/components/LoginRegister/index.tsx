@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../Header";
 import Footer from "../Footer";
+import { Icon } from '@iconify/react';  // Correct Icon import
 import {
   Container,
   Row,
@@ -8,8 +9,7 @@ import {
   Card,
   Form,
   Button,
-  ToggleButtonGroup,
-  ToggleButton,
+  InputGroup,
 } from "react-bootstrap";
 import login1 from "../../assets/images/login-banner.jpg";
 import { postData } from '../../WebService/API'
@@ -19,6 +19,8 @@ import { ToastContainer, toast } from "react-toastify";
 
 const LoginRegister: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +32,6 @@ const LoginRegister: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    debugger;
     setError("");
     setSuccess("");
 
@@ -70,7 +71,7 @@ const LoginRegister: React.FC = () => {
         });
         console.log("Response:", response)
         setSuccess("Signup successful! Please log in.");
-        toast.success("Signup successful! Please log in.Signup successful! Please log in.");
+        toast.success("Signup successful! Please log in.");
         setIsLogin(true);
       }
     } catch (err: any) {
@@ -111,6 +112,14 @@ const LoginRegister: React.FC = () => {
                 {error && <p className="text-danger text-center">{error}</p>}
                 <Form.Group className="mb-3">
                   <Form.Control
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Control
                     type="email"
                     placeholder="Email Address"
                     value={email}
@@ -118,21 +127,37 @@ const LoginRegister: React.FC = () => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <InputGroup>
+                    <Form.Control
+                      type={showPassword ? "text" : "password"} // Toggle between text and password
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <InputGroup.Text
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <Icon icon={showPassword ? "eva:eye-fill" : "eva:eye-off-fill"} width="20" height="20" />
+                    </InputGroup.Text>
+                  </InputGroup>
                 </Form.Group>
                 {!isLogin && (
                   <Form.Group className="mb-3">
-                    <Form.Control
-                      type="password"
-                      placeholder="Confirm Password"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
+                    <InputGroup>
+                      <Form.Control
+                        type={showConfirmPassword ? "text" : "password"}
+                        placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                      />
+                      <InputGroup.Text
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <Icon icon={showConfirmPassword ? "eva:eye-fill" : "eva:eye-off-fill"} width="20" height="20" />
+                      </InputGroup.Text>
+                    </InputGroup>
                   </Form.Group>
                 )}
                 {isLogin && (

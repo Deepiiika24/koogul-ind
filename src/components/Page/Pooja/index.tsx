@@ -172,7 +172,7 @@ const Pooja: React.FC = () => {
         {/* Single Page Header start */}
         <div className="container-fluid py-5"
           style={{
-            marginTop: "152px",
+            marginTop: "102px",
             position: "relative",
             backgroundImage: `url(https://img.freepik.com/premium-photo/bhai-dooj-hologram-concept-digital-voice-assistant-device-with-floating-glowing-symbols-white-ba_980716-749110.jpg)`,
             backgroundSize: "cover",

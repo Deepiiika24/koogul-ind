@@ -14,7 +14,7 @@ const SinglePageHeader: React.FC = () => {
   return (
     <div className="container-fluid py-5"
       style={{
-        marginTop: "152px",
+        marginTop: "102px",
         position: "relative",
         backgroundImage: `url(https://img.freepik.com/premium-photo/crispy-potato-chips-wooden-bowl-create-warm-inviting-snack-scene-perfect-sharing-enjoying-alone-golden-hues-enhance-delicious-appeal-chips_1138521-21043.jpg)`,
         backgroundSize: "cover",

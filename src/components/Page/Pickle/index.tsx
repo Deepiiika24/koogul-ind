@@ -57,7 +57,7 @@ const Pickle: React.FC = () => {
                 {/* Single Page Header start */}
                 <div className="container-fluid py-5"
                     style={{
-                        marginTop: "152px",
+                        marginTop: "102px",
                         position: "relative",
                         backgroundImage: `url(https://img.freepik.com/premium-photo/homemade-mango-pickle-aam-ka-achar-kairi-loncha-bowl-selective-focus_466689-61140.jpg)`,
                         backgroundSize: "cover",
