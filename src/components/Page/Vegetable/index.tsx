@@ -18,30 +18,58 @@ import vegetable10 from '../../../assets/images/Vegetable/Onion.jpg'
 import vegetable11 from '../../../assets/images/Vegetable/Potato.jpg'
 import vegetable12 from '../../../assets/images/Vegetable/Spinach.jpg'
 import { Link } from 'react-router-dom';
+import { postData } from '../../../WebService/API';
+import { toast } from 'react-toastify';
+
+const userId = Number(localStorage.getItem('userId') || 0);
 
 interface VegetableItem {
     id: number;
     name: string;
     image: string;
     path: string;
+    price: number;
+    quantity: number;
 }
 
 const vegetableData: VegetableItem[] = [
-    { id: 1, name: "Bottle Gourd", image: vegetable1, path: "/Vegetables/Bottle-gourd" },
-    { id: 2, name: "Brinjal", image: vegetable2, path: "/Vegetables/Brinjal" },
-    { id: 3, name: "Broccolie", image: vegetable3, path: "/Vegetables/Broccolie" },
-    { id: 4, name: "Cabbage", image: vegetable4, path: "/Vegetables/Cabbage" },
-    { id: 5, name: "Cauliflower", image: vegetable5, path: "/Vegetables/Cauli-Flower" },
-    { id: 6, name: "Drum stick", image: vegetable6, path: "/Vegetables/Drum-Stick" },
-    { id: 7, name: "Green chilli", image: vegetable7, path: "/Vegetables/Green-Chilli" },
-    { id: 8, name: "Lady finger", image: vegetable8, path: "/Vegetables/Ladyfinger" },
-    { id: 9, name: "Mushroom", image: vegetable9, path: "/Vegetables/Mushroom" },
-    { id: 10, name: "Onion", image: vegetable10, path: "/Vegetables/Onion" },
-    { id: 11, name: "Potato", image: vegetable11, path: "/Vegetables/Potato" },
-    { id: 12, name: "Spinach", image: vegetable12, path: "/Vegetables/Spinach" },
+    { id: 1, name: "Bottle Gourd", image: vegetable1, path: "/Vegetables/Bottle-gourd", price: 100, quantity: 1 },
+    { id: 2, name: "Brinjal", image: vegetable2, path: "/Vegetables/Brinjal", price: 100, quantity: 1 },
+    { id: 3, name: "Broccolie", image: vegetable3, path: "/Vegetables/Broccolie", price: 100, quantity: 1 },
+    { id: 4, name: "Cabbage", image: vegetable4, path: "/Vegetables/Cabbage", price: 100, quantity: 1 },
+    { id: 5, name: "Cauliflower", image: vegetable5, path: "/Vegetables/Cauli-Flower", price: 100, quantity: 1 },
+    { id: 6, name: "Drum stick", image: vegetable6, path: "/Vegetables/Drum-Stick", price: 100, quantity: 1 },
+    { id: 7, name: "Green chilli", image: vegetable7, path: "/Vegetables/Green-Chilli", price: 100, quantity: 1 },
+    { id: 8, name: "Lady finger", image: vegetable8, path: "/Vegetables/Ladyfinger", price: 100, quantity: 1 },
+    { id: 9, name: "Mushroom", image: vegetable9, path: "/Vegetables/Mushroom", price: 100, quantity: 1 },
+    { id: 10, name: "Onion", image: vegetable10, path: "/Vegetables/Onion", price: 100, quantity: 1 },
+    { id: 11, name: "Potato", image: vegetable11, path: "/Vegetables/Potato", price: 100, quantity: 1 },
+    { id: 12, name: "Spinach", image: vegetable12, path: "/Vegetables/Spinach", price: 100, quantity: 1 },
 ];
 
 const Vegetable: React.FC = () => {
+
+    const handleAddToCart = async (data: VegetableItem) => {
+        debugger
+        try {
+            const itemToSend = {
+                userId: Number(userId),
+                productId: data.id,
+                name: data.name,
+                price: data.price,
+                quantity: data.quantity,
+                image: data.image // or change to `imageUrl` if backend expects that
+            };
+
+            const response = await postData("cart/add", itemToSend);
+            console.log("Added to Cart:", response);
+            toast.success("Product Added to Cart");
+        } catch (error) {
+            console.error("Add to Cart failed:", error);
+            toast.error("Something went wrong");
+        }
+    };
+
 
     useEffect(() => {
         AOS.init({
@@ -134,12 +162,23 @@ const Vegetable: React.FC = () => {
                                         </div>
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h5 className="mt-3 text-center">
-                                                <a href="/" className="text-decoration-none text-dark">
+                                                <a className="text-decoration-none text-dark">
                                                     <Link to={data.path}>
                                                         {data.name}
                                                     </Link>
                                                 </a>
                                             </h5>
+                                            <div className="d-flex justify-content-center flex-lg-wrap">
+                                                <p className="text-dark fs-5 fw-bold mb-0">${data.price} / kg</p>
+                                                <a
+                                                    // href="#"
+                                                    className="btn border border-secondary rounded-pill px-3 text-primary"
+                                                    onClick={() => handleAddToCart(data)}
+                                                >
+                                                    <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                                                    Add to cart
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

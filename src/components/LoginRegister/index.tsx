@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import Header from "../Header";
 import Footer from "../Footer";
-import { ToastContainer, toast } from "react-toastify";
-import { Container, Row, Col, Card, Form, Button, ToggleButtonGroup, ToggleButton } from "react-bootstrap";
-import login1 from '../../assets/images/login-banner.jpg'
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button,
+  ToggleButtonGroup,
+  ToggleButton,
+} from "react-bootstrap";
+import login1 from "../../assets/images/login-banner.jpg";
 import { postData } from '../../WebService/API'
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 
 const LoginRegister: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -50,6 +59,7 @@ const LoginRegister: React.FC = () => {
         console.log("Response:", response);
         localStorage.setItem("token", response.token);
         localStorage.setItem("username", response.user.username);
+        localStorage.setItem("userId", String(response.user.id));
         navigate("/");
       } else {
         const response = await postData<{ message: string }>("auth/signup", {
@@ -72,40 +82,33 @@ const LoginRegister: React.FC = () => {
   return (
     <>
       <Header />
-      <Container fluid className="d-flex justify-content-center align-items-center vh-100 login-banner">
-        <Row className="rounded-3 overflow-hidden">
+      <Container fluid className="vh-100 d-flex align-items-center justify-content-center bg-light login-banner">
+        <Row className="w-100 shadow-lg rounded-4 overflow-hidden" style={{ maxWidth: "1000px" }}>
           {/* Left Side - Form */}
-          <Col xs={12} md={6} id="p-5" className="p-5 bg-white d-flex flex-column justify-content-center">
-            <Card className="border-0" id="cardResponsive">
+          <Col md={6} className="bg-white p-5 d-flex align-items-center">
+            <div className="w-100">
               <h3 className="text-center fw-bold mb-3">{isLogin ? "Log In" : "Sign Up"}</h3>
               <p className="text-center text-muted">Welcome back! Please enter your details</p>
 
-              <ToggleButtonGroup
-                type="radio"
-                name="authToggle"
-                value={isLogin ? "login" : "signup"}
-                onChange={() => setIsLogin(!isLogin)}
-                className="w-100 mb-3"
-              >
-                <ToggleButton id="login-btn" value="login" variant={isLogin ? "primary" : "light"}>
+              <div className="d-flex justify-content-center mb-3">
+                <Button
+                  variant={isLogin ? "danger" : "light"}
+                  className="me-2 w-50"
+                  onClick={() => setIsLogin(true)}
+                >
                   Login
-                </ToggleButton>
-                <ToggleButton id="signup-btn" value="signup" variant={!isLogin ? "primary" : "light"}>
+                </Button>
+                <Button
+                  variant={!isLogin ? "danger" : "light"}
+                  className="w-50"
+                  onClick={() => setIsLogin(false)}
+                >
                   Signup
-                </ToggleButton>
-              </ToggleButtonGroup>
-
+                </Button>
+              </div>
 
               <Form onSubmit={handleSubmit}>
                 {error && <p className="text-danger text-center">{error}</p>}
-                <Form.Group className="mb-3">
-                  <Form.Control
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Control
                     type="email"
@@ -134,32 +137,36 @@ const LoginRegister: React.FC = () => {
                 )}
                 {isLogin && (
                   <div className="text-end">
-                    <a className="text-decoration-none text-muted loginFont" >
+                    <a href="#" className="text-decoration-none text-muted">
                       Forgot password?
                     </a>
                   </div>
                 )}
-                <Button className="w-100 mt-3" variant="primary" type="submit">
+                <Button className="w-100 mt-3" variant="danger" type="submit">
                   {isLogin ? "Login" : "Signup"}
                 </Button>
               </Form>
 
               <div className="text-center mt-3">
                 {isLogin ? "Not a member? " : "Already have an account? "}
-                <a className="text-primary text-decoration-none loginFont" onClick={() => setIsLogin(!isLogin)}>
+                <a
+                  href="#"
+                  className="text-danger text-decoration-none"
+                  onClick={() => setIsLogin(!isLogin)}
+                >
                   {isLogin ? "Signup now" : "Login now"}
                 </a>
               </div>
-            </Card>
+            </div>
           </Col>
 
           {/* Right Side - Image */}
-          <Col xs={12} md={6} className="p-0 d-none d-md-block hide-below-425">
+          <Col md={6} className="p-0 d-none d-md-block">
             <img
               src={login1}
               alt="Login Illustration"
-              className="img-fluid w-100"
-              style={{ objectFit: "cover", height:"-webkit-fill-available" }}
+              className="img-fluid h-100 w-100"
+              style={{ objectFit: "cover" }}
             />
           </Col>
         </Row>

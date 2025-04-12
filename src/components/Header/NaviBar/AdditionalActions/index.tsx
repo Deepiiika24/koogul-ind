@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react"
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks"
 import { useNavigate } from "react-router-dom";
+import type { RootState } from "../../../../app/store"
 import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../../AuthContext";
@@ -7,6 +9,7 @@ import { useAuth } from "../../../../AuthContext";
 const AdditionalActions: React.FC = () => {
   const navigate = useNavigate();
   const { username, logout } = useAuth();
+  const { totalQuantity } = useAppSelector((state: RootState) => state.cart)
 
   const handleGoCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -15,6 +18,14 @@ const AdditionalActions: React.FC = () => {
 
   return (
     <div className="d-flex align-items-center m-3 ml-auto">
+      <a onClick={handleGoCart} href="/#" className="position-relative me-4 my-auto">
+        <i className="fas fa-shopping-bag fa-2x" />
+        {totalQuantity > 1 && (
+          <span
+            className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+            style={{ top: "-5px", left: "15px", height: "20px", minWidth: "20px" }}>{totalQuantity}</span>
+        )}
+      </a>
       <Dropdown>
         <Dropdown.Toggle variant="link" className="text-primary d-flex">
           <div>

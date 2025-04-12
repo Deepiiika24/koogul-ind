@@ -1,15 +1,11 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit"
 
-import vegetableitem3 from "../../assets/images/vegetable-item-3.png"
-import vegetableitem5 from "../../assets/images/vegetable-item-5.jpg"
-import vegetableitem2 from "../../assets/images/vegetable-item-2.jpg"
-
 interface CartItem {
   id: number;
   name: string;
   price: number;
   quantity: number;
-  img: string;
+  image: string;
 }
 
 interface CartState {
@@ -19,13 +15,9 @@ interface CartState {
 }
 
 const initialState: CartState = {
-  items: [
-    { id: 1000, name: "Big Banana", price: 2.99, quantity: 1, img: vegetableitem3 },
-    { id: 2000, name: "Potatoes", price: 2.99, quantity: 1, img: vegetableitem5 },
-    { id: 3000, name: "Awesome Broccoli", price: 2.99, quantity: 1, img: vegetableitem2 }
-  ],
+  items: [],
   shipping: 3.00,
-  totalQuantity: 3
+  totalQuantity: 0
 }
 
 export const cartSlice = createSlice({
