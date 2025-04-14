@@ -15,7 +15,7 @@ interface VegetableItem {
     id: number;
     name: string;
     price: number;
-    full_image_url: string;
+    image_url: string;
     quantity?: number;
 }
 
@@ -55,7 +55,7 @@ const Vegetable: React.FC = () => {
                 name: data.name,
                 price: data.price,
                 quantity: data.quantity,
-                imageUrl: data.full_image_url
+                imageUrl: data.image_url
             };
 
             const response = await postData("cart/add-to-cart", itemToSend);
@@ -140,7 +140,7 @@ const Vegetable: React.FC = () => {
                                     >
                                         <div className="fruite-img overflow-hidden">
                                             <img
-                                                src={data.full_image_url}
+                                                src={data.image_url}
                                                 className="img-fluid w-100 rounded-top"
                                                 alt={data.name}
                                                 style={{
