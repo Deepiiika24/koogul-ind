@@ -4,21 +4,9 @@ import Footer from '../../Footer'
 import { Container } from 'react-bootstrap'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from 'react';
-import vegetable1 from '../../../assets/images/Vegetable/BOTTEL.jpg'
-import vegetable2 from '../../../assets/images/Vegetable/Brinjal.jpg'
-import vegetable3 from '../../../assets/images/Vegetable/Broccolie.jpg'
-import vegetable4 from '../../../assets/images/Vegetable/cabbage.jpg'
-import vegetable5 from '../../../assets/images/Vegetable/cauliflower.jpg'
-import vegetable6 from '../../../assets/images/Vegetable/Drumstick.avif'
-import vegetable7 from '../../../assets/images/Vegetable/Green-chilli.jpg'
-import vegetable8 from '../../../assets/images/Vegetable/Ladys-finger.jpg'
-import vegetable9 from '../../../assets/images/Vegetable/Mushroom.jpg'
-import vegetable10 from '../../../assets/images/Vegetable/Onion.jpg'
-import vegetable11 from '../../../assets/images/Vegetable/Potato.jpg'
-import vegetable12 from '../../../assets/images/Vegetable/Spinach.jpg'
-import { Link } from 'react-router-dom';
-import { postData } from '../../../WebService/API';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getData, postData } from '../../../WebService/API';
 import { toast } from 'react-toastify';
 
 const userId = Number(localStorage.getItem('userId') || 0);
@@ -26,43 +14,52 @@ const userId = Number(localStorage.getItem('userId') || 0);
 interface VegetableItem {
     id: number;
     name: string;
-    image: string;
-    path: string;
     price: number;
-    quantity: number;
+    full_image_url: string;
+    quantity?: number;
 }
 
-const vegetableData: VegetableItem[] = [
-    { id: 1, name: "Bottle Gourd", image: vegetable1, path: "/Vegetables/Bottle-gourd", price: 100, quantity: 1 },
-    { id: 2, name: "Brinjal", image: vegetable2, path: "/Vegetables/Brinjal", price: 100, quantity: 1 },
-    { id: 3, name: "Broccolie", image: vegetable3, path: "/Vegetables/Broccolie", price: 100, quantity: 1 },
-    { id: 4, name: "Cabbage", image: vegetable4, path: "/Vegetables/Cabbage", price: 100, quantity: 1 },
-    { id: 5, name: "Cauliflower", image: vegetable5, path: "/Vegetables/Cauli-Flower", price: 100, quantity: 1 },
-    { id: 6, name: "Drum stick", image: vegetable6, path: "/Vegetables/Drum-Stick", price: 100, quantity: 1 },
-    { id: 7, name: "Green chilli", image: vegetable7, path: "/Vegetables/Green-Chilli", price: 100, quantity: 1 },
-    { id: 8, name: "Lady finger", image: vegetable8, path: "/Vegetables/Ladyfinger", price: 100, quantity: 1 },
-    { id: 9, name: "Mushroom", image: vegetable9, path: "/Vegetables/Mushroom", price: 100, quantity: 1 },
-    { id: 10, name: "Onion", image: vegetable10, path: "/Vegetables/Onion", price: 100, quantity: 1 },
-    { id: 11, name: "Potato", image: vegetable11, path: "/Vegetables/Potato", price: 100, quantity: 1 },
-    { id: 12, name: "Spinach", image: vegetable12, path: "/Vegetables/Spinach", price: 100, quantity: 1 },
-];
-
 const Vegetable: React.FC = () => {
+
+    const [vegetableData, setVegetableData] = useState<VegetableItem[]>([]);
+
+    const navigate = useNavigate();
+
+    const fetchVegetables = async () => {
+        try {
+            const response = await getData("vegetables?page=1&limit=1000",);
+            console.log("Response:", response);
+            setVegetableData(response.data.map((item: any) => ({
+                ...item,
+                quantity: 1 // Add default quantity
+            })));
+        } catch (error) {
+            console.error("Error fetching vegetables:", error);
+            toast.error("Failed to load vegetables");
+        }
+    }
 
     const handleAddToCart = async (data: VegetableItem) => {
         debugger
         try {
+
+            if (!userId || userId === 0) {
+                toast.error("Please login to add items to cart");
+                navigate('/LoginRegister');
+                return;
+            }
+
             const itemToSend = {
-                userId: Number(userId),
+                userId,
                 productId: data.id,
                 name: data.name,
                 price: data.price,
                 quantity: data.quantity,
-                image: data.image // or change to `imageUrl` if backend expects that
+                imageUrl: data.full_image_url
             };
 
-            const response = await postData("cart/add", itemToSend);
-            console.log("Added to Cart:", response);
+            const response = await postData("cart/add-to-cart", itemToSend);
+            console.log("Response:", response)
             toast.success("Product Added to Cart");
         } catch (error) {
             console.error("Add to Cart failed:", error);
@@ -72,6 +69,7 @@ const Vegetable: React.FC = () => {
 
 
     useEffect(() => {
+        fetchVegetables();
         AOS.init({
             duration: 1000, // Animation duration in milliseconds
             easing: "ease-in-out", // Animation easing
@@ -142,7 +140,7 @@ const Vegetable: React.FC = () => {
                                     >
                                         <div className="fruite-img overflow-hidden">
                                             <img
-                                                src={data.image}
+                                                src={data.full_image_url}
                                                 className="img-fluid w-100 rounded-top"
                                                 alt={data.name}
                                                 style={{
@@ -163,13 +161,13 @@ const Vegetable: React.FC = () => {
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h5 className="mt-3 text-center">
                                                 <a className="text-decoration-none text-dark">
-                                                    <Link to={data.path}>
+                                                    <Link to={data.name}>
                                                         {data.name}
                                                     </Link>
                                                 </a>
                                             </h5>
-                                            <div className="d-flex justify-content-center flex-lg-wrap">
-                                                <p className="text-dark fs-5 fw-bold mb-0">${data.price} / kg</p>
+                                            <div className="justify-content-center">
+                                                <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
                                                 <a
                                                     // href="#"
                                                     className="btn border border-secondary rounded-pill px-3 text-primary"

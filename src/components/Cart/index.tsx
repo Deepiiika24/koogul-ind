@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getData, putData } from "../../WebService/API";
+import { toast } from "react-toastify";
 
-interface CartItem {
+interface CartItems {
   id: number;
   name: string;
   price: number;
@@ -9,32 +10,52 @@ interface CartItem {
   image: string;
 }
 
+const userId = Number(localStorage.getItem('userId') || 0);
+
 const Cart: React.FC = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [cartItems, setCartItems] = useState<CartItems[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // Fetch cart items on component mount
   const fetchCartItems = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const items = await getData<CartItem[]>("/cart");
-      setCartItems(items);
+      const response = await getData("cart/get-cart", null, { userId });
+      console.log("Cart Data:", response.cart);
+
     } catch (error) {
-      console.error("Failed to fetch cart items:", error);
+      console.error("Failed to fetch cart:", error);
+      toast.error("Could not load cart");
     } finally {
       setLoading(false);
     }
   };
 
   // Update quantity of an item
-  const updateQuantity = async (itemId: number, newQuantity: number) => {
+  const updateQuantity = async (id: number, newQuantity: number) => {
     try {
-      await putData(`/cart/${itemId}`, { quantity: newQuantity });
-      fetchCartItems(); // Refresh cart after update
+      const itemToUpdate = cartItems.find(item => item.id === id);
+      if (!itemToUpdate) return;
+
+      const updatedItem = {
+        ...itemToUpdate,
+        quantity: newQuantity
+      };
+
+      const response = await putData(`cart/update-cart`, updatedItem);
+
+      if (response.success) {
+        toast.success("Cart updated!");
+        fetchCartItems(); // Refresh the cart
+      } else {
+        toast.error("Failed to update quantity");
+      }
     } catch (error) {
-      console.error("Failed to update quantity:", error);
+      console.error("Update failed:", error);
+      toast.error("Something went wrong");
     }
   };
+
 
   useEffect(() => {
     fetchCartItems();

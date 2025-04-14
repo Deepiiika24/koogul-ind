@@ -15,7 +15,7 @@ const ProductItem: React.FC<{ item: any }> = ({ item }) => {
         name: item.title,
         price: item.price,
         quantity: 1,
-        img: item.thumbnail
+        image: item.thumbnail
       }))
     } catch (err) {
       console.log(err)
