@@ -4,41 +4,75 @@ import Footer from '../../Footer'
 import { Container } from 'react-bootstrap'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from 'react';
-import Beeda1 from '../../../assets/images/Beeda/cocount.jpg'
-import Beeda2 from '../../../assets/images/Beeda/jeera.jpg'
-import Beeda3 from '../../../assets/images/Beeda/rore-beeda.jpg'
-import Beeda4 from '../../../assets/images/Beeda/tuttifrutti.jpg'
-import Beeda5 from '../../../assets/images/Beeda/dry-clove.jpg'
-import Beeda6 from '../../../assets/images/Beeda/chutni.jpg'
-import Beeda7 from '../../../assets/images/Beeda/cardamom.jpg'
-import Beeda8 from '../../../assets/images/Beeda/battikatha.jpg'
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getData, postData } from '../../../WebService/API';
+import { toast } from 'react-toastify';
+
+const userId = Number(localStorage.getItem('userId') || 0);
 
 interface BeedaItem {
     id: number;
     name: string;
-    image: string;
-    path: string;
+    price: number;
+    full_image_url: string;
+    quantity?: number;
 }
-
-const beedaItem: BeedaItem[] = [
-    { id: 1, name: "Shredded Coconut", image: Beeda1, path: "/beeda/shredded-coconut" },
-    { id: 2, name: "Sweet Jeera Mittai", image: Beeda2, path: "/beeda/sweet-jeera-mittai" },
-    { id: 3, name: "Rose Gulkand", image: Beeda3, path: "/beeda/rose-gulkand" },
-    { id: 4, name: "Dry Tutti Frutti", image: Beeda4, path: "/beeda/dry-tutti-frutti" },
-    { id: 5, name: "Dry Clove", image: Beeda5, path: "/beeda/dry-clove" },
-    { id: 6, name: "Sweet Pan Chutni", image: Beeda6, path: "/beeda/sweet-pan-chutni" },
-    { id: 6, name: "Cardamom Seeds", image: Beeda7, path: "/beeda/cardamon-seeds" },
-    { id: 6, name: "Kanpuri Biscuit", image: Beeda8, path: "/beeda/kanpuri-biscuit" }
-];
 
 const Beeda: React.FC = () => {
 
+    const [beedaData, setBeedaData] = useState<BeedaItem[]>([]);
+
+    const navigate = useNavigate();
+
+    const fetchBeeda = async () => {
+        try {
+            const response = await getData("paanBeeda?page=1&limit=1000",);
+            console.log("Response:", response);
+            setBeedaData(response.data.map((item: any) => ({
+                ...item,
+                quantity: 1 // Add default quantity
+            })));
+        } catch (error) {
+            console.error("Error fetching Beeda:", error);
+            toast.error("Failed to load Beeda");
+        }
+    }
+
+    const handleAddToCart = async (data: BeedaItem) => {
+        debugger
+        try {
+
+            if (!userId || userId === 0) {
+                toast.error("Please login to add items to cart");
+                navigate('/LoginRegister');
+                return;
+            }
+
+            const itemToSend = {
+                userId,
+                productId: data.id,
+                name: data.name,
+                price: data.price,
+                quantity: data.quantity,
+                imageUrl: data.full_image_url
+            };
+
+            const response = await postData("cart/add-to-cart", itemToSend);
+            console.log("Response:", response)
+            toast.success("Product Added to Cart");
+        } catch (error) {
+            console.error("Add to Cart failed:", error);
+            toast.error("Something went wrong");
+        }
+    };
+
+
     useEffect(() => {
+        fetchBeeda();
         AOS.init({
-            duration: 1000,
-            easing: "ease-in-out",
+            duration: 1000, // Animation duration in milliseconds
+            easing: "ease-in-out", // Animation easing
         });
     }, []);
 
@@ -58,7 +92,7 @@ const Beeda: React.FC = () => {
                         height: "auto"
                     }}
                 >
-                    <h1 data-aos="fade-up" className="text-center text-white display-6">Paan Beeda</h1>
+                    <h1 data-aos="fade-up" className="text-center text-white display-6">Beeda</h1>
                     <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
                         <li className="breadcrumb-item">
                             <a href="/" className='text-primary'>Home</a>
@@ -66,7 +100,7 @@ const Beeda: React.FC = () => {
                         <li className="breadcrumb-item">
                             <a href="/" className='text-primary'>Pages</a>
                         </li>
-                        <li className="breadcrumb-item active text-white">Paan Beeda</li>
+                        <li className="breadcrumb-item active text-white">Beeda</li>
                     </ol>
                 </div>
                 {/* Single Page Header End */}
@@ -75,20 +109,20 @@ const Beeda: React.FC = () => {
                 <div data-aos="fade-up">
                     <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
                         <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-                            Paan Beeda Export From India
+                        Paan Beeda Export From India
                         </h1>
                     </div>
                 </div>
                 <div data-aos="fade-up">
                     <div className="container-fluid">
                         <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
-                            India is renowned for its rich tradition of Paan Beeda, a flavorful combination of betel leaves, areca nut, and aromatic spices. As a leading exporter, we ensure premium-quality Paan Beeda is sourced from the finest ingredients and prepared with authentic techniques. Our exports maintain freshness, taste, and hygiene, making them a preferred choice in international markets. Whether for cultural traditions or as a mouth freshener, our Paan Beeda delivers an authentic Indian experience worldwide.</p>
+                        India is renowned for its rich tradition of Paan Beeda, a flavorful combination of betel leaves, areca nut, and aromatic spices. As a leading exporter, we ensure premium-quality Paan Beeda is sourced from the finest ingredients and prepared with authentic techniques. Our exports maintain freshness, taste, and hygiene, making them a preferred choice in international markets. Whether for cultural traditions or as a mouth freshener, our Paan Beeda delivers an authentic Indian experience worldwide.</p>
                     </div>
                 </div>
                 <div data-aos="fade-up">
                     <div className="bg-light p-5 rounded">
                         <div className="row g-4 justify-content-center">
-                            {beedaItem.map((data) => (
+                            {beedaData.map((data) => (
                                 <div key={data.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
                                     <div
                                         className="rounded position-relative fruite-item"
@@ -106,12 +140,12 @@ const Beeda: React.FC = () => {
                                     >
                                         <div className="fruite-img overflow-hidden">
                                             <img
-                                                src={data.image}
+                                                src={data.full_image_url}
                                                 className="img-fluid w-100 rounded-top"
                                                 alt={data.name}
                                                 style={{
                                                     transition: "transform 0.4s ease",
-                                                    height: "225px",
+                                                    height: "180px",
                                                 }}
                                                 onMouseEnter={(e) => {
                                                     e.currentTarget.style.transform = "scale(1.1)";
@@ -122,16 +156,27 @@ const Beeda: React.FC = () => {
                                             />
                                         </div>
                                         <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Beeda
+                                        Beeda
                                         </div>
-                                        <div className="pt-4 pb-4 border border-primary border-top-0 rounded-bottom text-center">
+                                        <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h5 className="mt-3 text-center">
                                                 <a className="text-decoration-none text-dark">
-                                                    <Link to={data.path}>
+                                                    <Link to={data.name}>
                                                         {data.name}
                                                     </Link>
                                                 </a>
                                             </h5>
+                                            <div className="justify-content-center">
+                                                <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                                                <a
+                                                    // href="#"
+                                                    className="btn border border-secondary rounded-pill px-3 text-primary"
+                                                    onClick={() => handleAddToCart(data)}
+                                                >
+                                                    <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                                                    Add to cart
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

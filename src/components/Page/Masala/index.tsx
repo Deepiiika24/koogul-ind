@@ -4,37 +4,75 @@ import Footer from '../../Footer'
 import { Container } from 'react-bootstrap'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from 'react';
-import Masala1 from '../../../assets/images/Masala/Garam_Masala.png'
-import Masala2 from '../../../assets/images/Masala/Curry_Masala.png'
-import Masala3 from '../../../assets/images/Masala/Sambar_Masala.png'
-import Masala4 from '../../../assets/images/Masala/Rasam_Masala.png'
-import Masala5 from '../../../assets/images/Masala/Pulikulambu_Masala.png'
-import Masala6 from '../../../assets/images/Masala/Meat_Curry_Masala.png'
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getData, postData } from '../../../WebService/API';
+import { toast } from 'react-toastify';
+
+const userId = Number(localStorage.getItem('userId') || 0);
 
 interface MasalaItem {
     id: number;
     name: string;
-    image: string;
-    path: string;
+    price: number;
+    full_image_url: string;
+    quantity?: number;
 }
-
-const masalaData: MasalaItem[] = [
-    { id: 1, name: "Garam Masala", image: Masala1, path: "/masala/garam-masala" },
-    { id: 2, name: "Curry Masala", image: Masala2, path: "/masala/curry-masala" },
-    { id: 3, name: "Sambar Masala", image: Masala3, path: "/masala/sambar-masala" },
-    { id: 4, name: "Rasam Masala", image: Masala4, path: "/masala/rasam-masala" },
-    { id: 5, name: "PuliKulambu Masala", image: Masala5, path: "/masala/pulikulambu-masala" },
-    { id: 6, name: "Meat Curry Masala", image: Masala6, path: "/masala/meat-curry-masala" }
-];
 
 const Masala: React.FC = () => {
 
+    const [masalaData, setMasalaData] = useState<MasalaItem[]>([]);
+
+    const navigate = useNavigate();
+
+    const fetchMasala = async () => {
+        try {
+            const response = await getData("masala?page=1&limit=1000",);
+            console.log("Response:", response);
+            setMasalaData(response.data.map((item: any) => ({
+                ...item,
+                quantity: 1 // Add default quantity
+            })));
+        } catch (error) {
+            console.error("Error fetching Masala:", error);
+            toast.error("Failed to load Masala");
+        }
+    }
+
+    const handleAddToCart = async (data: MasalaItem) => {
+        debugger
+        try {
+
+            if (!userId || userId === 0) {
+                toast.error("Please login to add items to cart");
+                navigate('/LoginRegister');
+                return;
+            }
+
+            const itemToSend = {
+                userId,
+                productId: data.id,
+                name: data.name,
+                price: data.price,
+                quantity: data.quantity,
+                imageUrl: data.full_image_url
+            };
+
+            const response = await postData("cart/add-to-cart", itemToSend);
+            console.log("Response:", response)
+            toast.success("Product Added to Cart");
+        } catch (error) {
+            console.error("Add to Cart failed:", error);
+            toast.error("Something went wrong");
+        }
+    };
+
+
     useEffect(() => {
+        fetchMasala();
         AOS.init({
-            duration: 1000,
-            easing: "ease-in-out",
+            duration: 1000, // Animation duration in milliseconds
+            easing: "ease-in-out", // Animation easing
         });
     }, []);
 
@@ -44,17 +82,17 @@ const Masala: React.FC = () => {
             <>
                 {/* Single Page Header start */}
                 <div className="container-fluid py-5"
-                    style={{
-                        marginTop: "102px",
-                        position: "relative",
-                        backgroundImage: `url(https://img.freepik.com/premium-photo/indian-spices_849688-7379.jpg)`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center center",
-                        backgroundRepeat: "no-repeat",
-                        height: "auto"
-                    }}
+                   style={{
+                    marginTop: "102px",
+                    position: "relative",
+                    backgroundImage: `url(https://img.freepik.com/premium-photo/indian-spices_849688-7379.jpg)`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center center",
+                    backgroundRepeat: "no-repeat",
+                    height: "auto"
+                }}
                 >
-                    <h1 data-aos="fade-up" className="text-center text-white display-6">Masalas</h1>
+                    <h1 data-aos="fade-up" className="text-center text-white display-6">Masala</h1>
                     <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
                         <li className="breadcrumb-item">
                             <a href="/" className='text-primary'>Home</a>
@@ -62,7 +100,7 @@ const Masala: React.FC = () => {
                         <li className="breadcrumb-item">
                             <a href="/" className='text-primary'>Pages</a>
                         </li>
-                        <li className="breadcrumb-item active text-white">Masalas</li>
+                        <li className="breadcrumb-item active text-white">Masala</li>
                     </ol>
                 </div>
                 {/* Single Page Header End */}
@@ -71,14 +109,14 @@ const Masala: React.FC = () => {
                 <div data-aos="fade-up">
                     <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
                         <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-                            Premium Masala Products Exporter – Excellence in every Spice
+                        Premium Masala Products Exporter – Excellence in every Spice
                         </h1>
                     </div>
                 </div>
                 <div data-aos="fade-up">
                     <div className="container-fluid">
                         <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
-                            Koogul Industries is dedicated to exporting the finest masala products, bringing authentic flavor and quality to kitchens worldwide. We source only the best spices from trusted suppliers, ensuring that each product delivers unmatched freshness, rich aroma, and superior taste. Every batch is meticulously tested for quality and consistency, guaranteeing that our masala products meet the highest international standards. Experience the true essence of spices with Koogul Industries' premium masalas, crafted to elevate every dish.</p>
+                        Koogul Industries is dedicated to exporting the finest masala products, bringing authentic flavor and quality to kitchens worldwide. We source only the best spices from trusted suppliers, ensuring that each product delivers unmatched freshness, rich aroma, and superior taste. Every batch is meticulously tested for quality and consistency, guaranteeing that our masala products meet the highest international standards. Experience the true essence of spices with Koogul Industries' premium masalas, crafted to elevate every dish.</p>
                     </div>
                 </div>
                 <div data-aos="fade-up">
@@ -102,12 +140,12 @@ const Masala: React.FC = () => {
                                     >
                                         <div className="fruite-img overflow-hidden">
                                             <img
-                                                src={data.image}
+                                                src={data.full_image_url}
                                                 className="img-fluid w-100 rounded-top"
                                                 alt={data.name}
                                                 style={{
                                                     transition: "transform 0.4s ease",
-                                                    height: "225px",
+                                                    height: "180px",
                                                 }}
                                                 onMouseEnter={(e) => {
                                                     e.currentTarget.style.transform = "scale(1.1)";
@@ -118,16 +156,27 @@ const Masala: React.FC = () => {
                                             />
                                         </div>
                                         <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Masala
+                                        Masala
                                         </div>
-                                        <div className="pt-4 pb-4 border border-primary border-top-0 rounded-bottom text-center">
+                                        <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h5 className="mt-3 text-center">
                                                 <a className="text-decoration-none text-dark">
-                                                    <Link to={data.path}>
+                                                    <Link to={data.name}>
                                                         {data.name}
                                                     </Link>
                                                 </a>
                                             </h5>
+                                            <div className="justify-content-center">
+                                                <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                                                <a
+                                                    // href="#"
+                                                    className="btn border border-secondary rounded-pill px-3 text-primary"
+                                                    onClick={() => handleAddToCart(data)}
+                                                >
+                                                    <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                                                    Add to cart
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

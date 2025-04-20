@@ -4,46 +4,72 @@ import Footer from '../../Footer'
 import { Container } from 'react-bootstrap'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from 'react';
-import pickle1 from '../../../assets/images/Pickles/Garlic-Pickle.jpg'
-import pickle2 from '../../../assets/images/Pickles/GreenChilli-Pickle.jpg'
-import pickle3 from '../../../assets/images/Pickles/Tomato-Pickle.jpg'
-import pickle4 from '../../../assets/images/Pickles/Mango-Pickle.jpg'
-import pickle5 from '../../../assets/images/Pickles/Brinjal-Pickle.jpg'
-import pickle6 from '../../../assets/images/Pickles/Curry-Pickle.jpg'
-import pickle7 from '../../../assets/images/Pickles/Coriander-Pickle.jpg'
-import pickle8 from '../../../assets/images/Pickles/Ginger-Pickle.jpg'
-import pickle9 from '../../../assets/images/Pickles/Mahani-Pickle.jpg'
-import pickle10 from '../../../assets/images/Pickles/Vadu-Maangai-Pickle.jpg'
-import pickle11 from '../../../assets/images/Pickles/Amla-Pickle.jpg'
-import pickle12 from '../../../assets/images/Pickles/Lime-Pickle.jpg'
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getData, postData } from '../../../WebService/API';
+import { toast } from 'react-toastify';
+
+const userId = Number(localStorage.getItem('userId') || 0);
 
 interface PickleItem {
     id: number;
     name: string;
-    image: string;
-    path: string;
+    price: number;
+    full_image_url: string;
+    quantity?: number;
 }
-
-const pickleData: PickleItem[] = [
-    { id: 1, name: "Garlic Pickle", image: pickle1, path: "/pickle/garlic-pickle" },
-    { id: 2, name: "Green Chilli Pickle", image: pickle2, path: "/pickle/green-chilli-pickle" },
-    { id: 3, name: "Tomato Pickle", image: pickle3, path: "/pickle/tomato-pickle" },
-    { id: 4, name: "Mango Pickle", image: pickle4, path: "/pickle/mango-pickle" },
-    { id: 5, name: "Brinjal Pickle", image: pickle5, path: "/pickle/brinjal-pickle" },
-    { id: 6, name: "Curry Pickle", image: pickle6, path: "/pickle/curry-pickle" },
-    { id: 7, name: "Coriander Pickle", image: pickle7, path: "/pickle/coriander-pickle" },
-    { id: 8, name: "Ginger Pickle", image: pickle8, path: "/pickle/ginger-pickle" },
-    { id: 9, name: "Mahani Pickle", image: pickle9, path: "/pickle/mahani-pickle" },
-    { id: 10, name: "Vadu Maangai", image: pickle10, path: "/pickle/vadu-maangai" },
-    { id: 11, name: "Amla Pickle", image: pickle11, path: "/pickle/amla-pickle" },
-    { id: 12, name: "Lime Pickle", image: pickle12, path: "/pickle/lime-pickle" },
-];
 
 const Pickle: React.FC = () => {
 
+    const [pickleData, setPickleData] = useState<PickleItem[]>([]);
+
+    const navigate = useNavigate();
+
+    const fetchPickle= async () => {
+        try {
+            const response = await getData("pickle?page=1&limit=1000",);
+            console.log("Response:", response);
+            setPickleData(response.data.map((item: any) => ({
+                ...item,
+                quantity: 1 // Add default quantity
+            })));
+        } catch (error) {
+            console.error("Error fetching Pickle:", error);
+            toast.error("Failed to load Pickle");
+        }
+    }
+
+    const handleAddToCart = async (data: PickleItem) => {
+        debugger
+        try {
+
+            if (!userId || userId === 0) {
+                toast.error("Please login to add items to cart");
+                navigate('/LoginRegister');
+                return;
+            }
+
+            const itemToSend = {
+                userId,
+                productId: data.id,
+                name: data.name,
+                price: data.price,
+                quantity: data.quantity,
+                imageUrl: data.full_image_url
+            };
+
+            const response = await postData("cart/add-to-cart", itemToSend);
+            console.log("Response:", response)
+            toast.success("Product Added to Cart");
+        } catch (error) {
+            console.error("Add to Cart failed:", error);
+            toast.error("Something went wrong");
+        }
+    };
+
+
     useEffect(() => {
+        fetchPickle();
         AOS.init({
             duration: 1000, // Animation duration in milliseconds
             easing: "ease-in-out", // Animation easing
@@ -66,7 +92,7 @@ const Pickle: React.FC = () => {
                         height: "auto"
                     }}
                 >
-                    <h1 data-aos="fade-up" className="text-center text-white display-6">Pickles</h1>
+                    <h1 data-aos="fade-up" className="text-center text-white display-6">Pickle</h1>
                     <ol data-aos="fade-up" className="breadcrumb justify-content-center mb-0">
                         <li className="breadcrumb-item">
                             <a href="/" className='text-primary'>Home</a>
@@ -74,7 +100,7 @@ const Pickle: React.FC = () => {
                         <li className="breadcrumb-item">
                             <a href="/" className='text-primary'>Pages</a>
                         </li>
-                        <li className="breadcrumb-item active text-white">Pickles</li>
+                        <li className="breadcrumb-item active text-white">Pickle</li>
                     </ol>
                 </div>
                 {/* Single Page Header End */}
@@ -83,14 +109,14 @@ const Pickle: React.FC = () => {
                 <div data-aos="fade-up">
                     <div className='text-center mx-auto mb-5' style={{ maxWidth: "700px" }}>
                         <h1 className="display-4" style={{ fontSize: "1.5rem", paddingTop: "90px" }}>
-                            We Export Finest Pickles, Delivering flavor in every Jar
+                        We Export Finest Pickles, Delivering flavor in every Jar
                         </h1>
                     </div>
                 </div>
                 <div data-aos="fade-up">
                     <div className="container-fluid">
                         <p className="text-justify p-3 mx-auto" id='p-3' style={{ width: "100%", textAlign: "justify" }}>
-                            At Koogul Industries, we take pride in exporting only the finest pickles to satisfy the varied tastes of our global customers. Our commitment to excellence starts with selecting the freshest ingredients from trusted sources. Each jar of pickle undergoes strict quality checks to ensure it meets our high standards.</p>
+                        At Koogul Industries, we take pride in exporting only the finest pickles to satisfy the varied tastes of our global customers. Our commitment to excellence starts with selecting the freshest ingredients from trusted sources. Each jar of pickle undergoes strict quality checks to ensure it meets our high standards.</p>
                     </div>
                 </div>
                 <div data-aos="fade-up">
@@ -114,7 +140,7 @@ const Pickle: React.FC = () => {
                                     >
                                         <div className="fruite-img overflow-hidden">
                                             <img
-                                                src={data.image}
+                                                src={data.full_image_url}
                                                 className="img-fluid w-100 rounded-top"
                                                 alt={data.name}
                                                 style={{
@@ -130,16 +156,27 @@ const Pickle: React.FC = () => {
                                             />
                                         </div>
                                         <div className="text-white bg-primary px-3 py-1 rounded position-absolute top-0 start-0 m-2">
-                                            Pickle
+                                        Pickle
                                         </div>
                                         <div className="p-4 border border-primary border-top-0 rounded-bottom text-center">
                                             <h5 className="mt-3 text-center">
                                                 <a className="text-decoration-none text-dark">
-                                                    <Link to={data.path}>
+                                                    <Link to={data.name}>
                                                         {data.name}
                                                     </Link>
                                                 </a>
                                             </h5>
+                                            <div className="justify-content-center">
+                                                <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                                                <a
+                                                    // href="#"
+                                                    className="btn border border-secondary rounded-pill px-3 text-primary"
+                                                    onClick={() => handleAddToCart(data)}
+                                                >
+                                                    <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                                                    Add to cart
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
