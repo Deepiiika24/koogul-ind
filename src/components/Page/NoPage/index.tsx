@@ -5,80 +5,21 @@ import Footer from '../../Footer'
 import { Col, Container, Row } from 'react-bootstrap'
 import Carousel from "react-bootstrap/Carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import Flower1 from '../../../assets/images/Flower/White-carnation.jpg'
-import Flower2 from '../../../assets/images/Flower/Soft-pink-carnation-heads.jpg'
-import Flower3 from '../../../assets/images/Flower/Red-carnation.jpg'
-import Flower4 from '../../../assets/images/Flower/Peach-carnation.jpg'
-import Flower5 from '../../../assets/images/Flower/Orange-carnation.jpg'
-import Flower6 from '../../../assets/images/Flower/Yellow-carnation.jpg'
-import Flower7 from '../../../assets/images/Flower/Soft-purple-carnation.jpg'
-import Flower8 from '../../../assets/images/Flower/Carnation-bacarat-purple.jpg'
-import Flower9 from '../../../assets/images/Flower/Purple-carnation.jpg'
-import Flower10 from '../../../assets/images/Flower/Pink-carnation.jpg'
-import Flower11 from '../../../assets/images/Flower/Tuberose.jpg'
-import Flower12 from '../../../assets/images/Flower/Yellow-Marigold.jpg'
-import Flower13 from '../../../assets/images/Flower/Orange-Marigold.webp'
-import Flower14 from '../../../assets/images/Flower/Pooja-Flower.webp'
-import Flower15 from '../../../assets/images/Flower/Red-button-rose.jpg'
-import Flower16 from '../../../assets/images/Flower/Yellow-rose.jpg'
-import Flower17 from '../../../assets/images/Flower/Orange-rose.jpg'
-import Garland1 from '../../../assets/images/Flower/Carnation-Garland-Hover.png'
-import Garland2 from '../../../assets/images/Flower/Rose-garland.png'
-import Garland3 from '../../../assets/images/Flower/Wedding-Garland.png'
-import Garland4 from '../../../assets/images/Flower/Tuberose-Garland.png'
-import Petal1 from '../../../assets/images/Flower/Red-Rose-petels.jpg'
-import Petal2 from '../../../assets/images/Flower/Yellow-petals.avif'
-import Petal3 from '../../../assets/images/Flower/Orange-Petals.jpg'
-import Petal4 from '../../../assets/images/Flower/Mixed-Petals.avif'
-import String1 from '../../../assets/images/Flower/Jasmine-string.png'
-import String2 from '../../../assets/images/Flower/Mixed-carnation-string.jpg'
-import String3 from '../../../assets/images/Flower/Baby-breath.png'
-import String4 from '../../../assets/images/Flower/Marigold-string.webp'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getData, postData } from '../../../WebService/API';
+import { toast } from 'react-toastify';
 
-const images = [
-  { img: Flower1, name: "White Carnation", path: "/flower/white-carnation" },
-  { img: Flower2, name: "Soft Pink Carnation", path: "/flower/soft-pink-carnation" },
-  { img: Flower3, name: "Red Carnation", path: "/flower/red-carnation" },
-  { img: Flower4, name: "Peach Carnation", path: "/flower/peach-carnation" },
-  { img: Flower5, name: "Orange Carnation", path: "/flower/orange-carnation" },
-  { img: Flower6, name: "Yellow Carnation", path: "/flower/yellow-carnation" },
-  { img: Flower7, name: "Soft Purple Carnation", path: "/flower/soft-purple-carnation" },
-  { img: Flower8, name: "Carnation bacarat", path: "/flower/carnation-bacarat" },
-  { img: Flower9, name: "Purple Carnation", path: "/flower/purple-carnation" },
-  { img: Flower10, name: "Pink Carnation", path: "/flower/pink-carnation" },
-  { img: Flower11, name: "Tuberose", path: "/flower/tuberose" },
-  { img: Flower12, name: "Yellow Marigold", path: "/flower/yellow-marigold" },
-  { img: Flower13, name: "Orange Marigold", path: "/flower/orange-marigold" },
-  { img: Flower14, name: "Pooja Flower", path: "/flower/pooja-flower" },
-  { img: Flower15, name: "Red Rose", path: "/flower/red-rose" },
-  { img: Flower16, name: "Yellow Rose", path: "/flower/yellow-rose" },
-  { img: Flower17, name: "Orange Rose", path: "/flower/orange-rose" },
-];
+const userId = Number(localStorage.getItem('userId') || 0);
 
-const garlands = [
-  { img: Garland1, name: "Carnation Garland", path: "/flower/carnation-garland" },
-  { img: Garland2, name: "Rose Garland", path: "/flower/rose-garland" },
-  { img: Garland3, name: "Wedding Garland", path: "/flower/wedding-garland" },
-  { img: Garland4, name: "Tuberose Garland", path: "/flower/tuberose-garland" },
-];
-
-const petals = [
-  { img: Petal1, name: "Red Rose Petals", path: "/flower/red-rose-petals" },
-  { img: Petal2, name: "Yellow Rose Petals", path: "/flower/yellow-rose-petals" },
-  { img: Petal3, name: "Orange Rose Petals", path: "/flower/orange-rose-petals" },
-  { img: Petal4, name: "Mixed Rose Petals", path: "/flower/mixed-rose-petals" },
-]
-
-const strings = [
-  { img: String1, name: "Jasmine String", path: "/flower/jasmine-string" },
-  { img: String2, name: "Carnation String", path: "/flower/carnation-string" },
-  { img: String3, name: "Baby Breath", path: "/flower/baby-breath-string" },
-  { img: String4, name: "Mixed Marigold String", path: "/flower/mixed-marigold-string" },
-]
+interface flowerItem {
+  id: number;
+  name: string;
+  price: number;
+  full_image_url: string;
+  quantity?: number;
+}
 
 const getSlidesPerView = (width: number) => {
   if (width >= 1280) return 4;
@@ -87,8 +28,8 @@ const getSlidesPerView = (width: number) => {
   return 1;
 };
 
-const getSlides = (arr: { img: string; name: string; path: string }[], perSlide: number) => {
-  let slides: { img: string; name: string; path: string }[][] = [];
+const getSlides = (arr: flowerItem[], perSlide: number) => {
+  let slides: flowerItem[][] = [];
   for (let i = 0; i < arr.length; i += perSlide) {
     let slide = arr.slice(i, i + perSlide);
 
@@ -105,6 +46,18 @@ const getSlides = (arr: { img: string; name: string; path: string }[], perSlide:
 const Flower: React.FC = () => {
 
   const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView(window.innerWidth));
+  const [flowerHeads, setFlowerHeads] = useState<flowerItem[]>([]);
+  const [garlands, setGarlands] = useState<flowerItem[]>([]);
+  const [petals, setPetals] = useState<flowerItem[]>([]);
+  const [strings, setStrings] = useState<flowerItem[]>([]);
+  const [loading, setLoading] = useState({
+    flowerHeads: true,
+    garlands: true,
+    petals: true,
+    strings: true
+  });
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -112,16 +65,79 @@ const Flower: React.FC = () => {
     };
 
     window.addEventListener("resize", handleResize);
+
+    // Fetch all flower data
+    const fetchFlowerData = async () => {
+      try {
+        // Fetch flower heads
+        const headsResponse = await getData('flower/flower-head');
+        setFlowerHeads(headsResponse.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          full_image_url: item.full_image_url,
+          quantity: 1,
+          path: `/flower/${item.slug || item.name.toLowerCase().replace(/\s+/g, '-')}`
+        })));
+        setLoading(prev => ({ ...prev, flowerHeads: false }));
+
+        // Fetch garlands
+        const garlandsResponse = await getData('flower/flower-garland');
+        setGarlands(garlandsResponse.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          full_image_url: item.full_image_url,
+          quantity: 1,
+          path: `/flower/${item.slug || item.name.toLowerCase().replace(/\s+/g, '-')}`
+        })));
+        setLoading(prev => ({ ...prev, garlands: false }));
+
+        // Fetch petals
+        const petalsResponse = await getData('flower/flower-petals');
+        setPetals(petalsResponse.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          full_image_url: item.full_image_url,
+          quantity: 1,
+          path: `/flower/${item.slug || item.name.toLowerCase().replace(/\s+/g, '-')}`
+        })));
+        setLoading(prev => ({ ...prev, petals: false }));
+
+        // Fetch strings
+        const stringsResponse = await getData('flower/flower-string');
+        setStrings(stringsResponse.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          full_image_url: item.full_image_url,
+          quantity: 1,
+          path: `/flower/${item.slug || item.name.toLowerCase().replace(/\s+/g, '-')}`
+        })));
+        setLoading(prev => ({ ...prev, strings: false }));
+
+      } catch (err) {
+        setError("Failed to load flower data. Please try again later.");
+        setLoading({
+          flowerHeads: false,
+          garlands: false,
+          petals: false,
+          strings: false
+        });
+        console.error("Error fetching flower data:", err);
+      }
+    };
+
+    fetchFlowerData();
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const slides = getSlides(images, slidesPerView);
-
-  const garSlides = getSlides(garlands, slidesPerView)
-
-  const petalSlides = getSlides(petals, slidesPerView)
-
-  const stringSlides = getSlides(strings, slidesPerView)
+  const flowerHeadSlides = getSlides(flowerHeads, slidesPerView);
+  const garlandSlides = getSlides(garlands, slidesPerView);
+  const petalSlides = getSlides(petals, slidesPerView);
+  const stringSlides = getSlides(strings, slidesPerView);
 
   useEffect(() => {
     AOS.init({
@@ -129,6 +145,50 @@ const Flower: React.FC = () => {
       easing: "ease-in-out", // Animation easing
     });
   }, []);
+
+  const handleAddToCart = async (data: flowerItem) => {
+    debugger
+    try {
+
+      if (!userId || userId === 0) {
+        toast.error("Please login to add items to cart");
+        navigate('/LoginRegister');
+        return;
+      }
+
+      const quantity = typeof data.quantity === 'number' && data.quantity > 0 
+      ? data.quantity 
+      : 1;
+
+      const itemToSend = {
+        userId,
+        productId: data.id,
+        name: data.name,
+        price: data.price,
+        quantity: quantity,
+        imageUrl: data.full_image_url
+      };
+
+      const response = await postData("cart/add-to-cart", itemToSend);
+      console.log("Response:", response)
+      toast.success("Product Added to Cart");
+    } catch (error) {
+      console.error("Add to Cart failed:", error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  if (error) {
+    return (
+      <>
+        <Header />
+        <div className="container-fluid py-5" style={{ marginTop: "102px" }}>
+          <div className="alert alert-danger">{error}</div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -174,25 +234,37 @@ const Flower: React.FC = () => {
           </div>
         </div>
       </Container>
+
       <div className='bg-light p-5 rounded'>
         <h2 className='text-start mb-4' data-aos="fade-up">Flower Heads</h2>
         <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
-          {slides.map((group, index) => (
+          {flowerHeadSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
                 {group.map((data, i) => (
                   <Col key={i} xs={12} sm={6} md={3} id='columns'>
                     <div className="rounded p-2">
-                      <div className="card" style={{ height: 300 }}>
+                      <div className="card" style={{ height: 425 }}>
                         <img
-                          src={data.img}
+                          src={data.full_image_url}
                           className="img-fluid w-100 rounded"
                           alt={`Slide ${index * 4 + i + 1}`}
                           style={{
                             height: "243px"
                           }}
                         />
-                        <h5 className='py-3'><Link to={data.path}>{data.name}</Link></h5>
+                        <h5 className='py-3'><Link to={data.name}>{data.name}</Link></h5>
+                        <div className="justify-content-center">
+                          <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                          <a
+                            // href="#"
+                            className="btn border border-secondary rounded-pill px-3 text-primary"
+                            onClick={() => handleAddToCart(data)}
+                          >
+                            <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Col>
@@ -201,24 +273,36 @@ const Flower: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
+
         <h2 className='mt-5 mb-5' data-aos="fade-up">Flower Garlands</h2>
         <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
-          {garSlides.map((group, index) => (
+          {garlandSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
                 {group.map((data, i) => (
                   <Col key={i} xs={12} sm={6} md={3} id='columns'>
                     <div className="rounded p-2">
-                      <div className="card" style={{ height: 300 }}>
+                      <div className="card" style={{ height: 425 }}>
                         <img
-                          src={data.img}
+                          src={data.full_image_url}
                           className="img-fluid w-100 rounded"
                           alt={`Slide ${index * 4 + i + 1}`}
                           style={{
                             height: "243px"
                           }}
                         />
-                        <h5 className='py-3'><Link to={data.path}>{data.name}</Link></h5>
+                        <h5 className='py-3'><Link to={data.name}>{data.name}</Link></h5>
+                        <div className="justify-content-center">
+                          <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                          <a
+                            // href="#"
+                            className="btn border border-secondary rounded-pill px-3 text-primary"
+                            onClick={() => handleAddToCart(data)}
+                          >
+                            <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Col>
@@ -227,6 +311,7 @@ const Flower: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
+
         <h2 className='mt-5 mb-5' data-aos="fade-up">Flower Petals</h2>
         <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {petalSlides.map((group, index) => (
@@ -235,16 +320,27 @@ const Flower: React.FC = () => {
                 {group.map((data, i) => (
                   <Col key={i} xs={12} sm={6} md={3} id='columns'>
                     <div className="rounded p-2">
-                      <div className="card" style={{ height: 300 }}>
+                      <div className="card" style={{ height: 425 }}>
                         <img
-                          src={data.img}
+                          src={data.full_image_url}
                           className="img-fluid w-100 rounded"
                           alt={`Slide ${index * 4 + i + 1}`}
                           style={{
                             height: "243px"
                           }}
                         />
-                        <h5 className='py-3'><Link to={data.path}>{data.name}</Link></h5>
+                        <h5 className='py-3'><Link to={data.name}>{data.name}</Link></h5>
+                        <div className="justify-content-center">
+                          <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                          <a
+                            // href="#"
+                            className="btn border border-secondary rounded-pill px-3 text-primary"
+                            onClick={() => handleAddToCart(data)}
+                          >
+                            <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Col>
@@ -253,6 +349,7 @@ const Flower: React.FC = () => {
             </Carousel.Item>
           ))}
         </Carousel>
+
         <h2 className='mt-5 mb-5' data-aos="fade-up">Flower String</h2>
         <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
           {stringSlides.map((group, index) => (
@@ -261,16 +358,27 @@ const Flower: React.FC = () => {
                 {group.map((data, i) => (
                   <Col key={i} xs={12} sm={6} md={3} id='columns'>
                     <div className="rounded p-2">
-                      <div className="card" style={{ height: 300 }}>
+                      <div className="card" style={{ height: 425 }}>
                         <img
-                          src={data.img}
+                          src={data.full_image_url}
                           className="img-fluid w-100 rounded"
                           alt={`Slide ${index * 4 + i + 1}`}
                           style={{
                             height: "243px"
                           }}
                         />
-                        <h5 className='py-3'><Link to={data.path}>{data.name}</Link></h5>
+                        <h5 className='py-3'><Link to={data.name}>{data.name}</Link></h5>
+                        <div className="justify-content-center">
+                          <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                          <a
+                            // href="#"
+                            className="btn border border-secondary rounded-pill px-3 text-primary"
+                            onClick={() => handleAddToCart(data)}
+                          >
+                            <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Col>

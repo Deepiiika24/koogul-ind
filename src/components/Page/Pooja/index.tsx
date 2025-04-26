@@ -5,112 +5,23 @@ import Footer from '../../Footer'
 import { Col, Container, Row } from 'react-bootstrap'
 import Carousel from "react-bootstrap/Carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import Flower1 from '../../../assets/images/pooja/kit1.jpg'
-import Flower2 from '../../../assets/images/pooja/kit2.jpg'
-import Flower3 from '../../../assets/images/pooja/kit3.jpg'
-import Flower4 from '../../../assets/images/pooja/kit4.jpg'
-import Flower5 from '../../../assets/images/pooja/kit5.jpg'
-import Flower6 from '../../../assets/images/pooja/kit6.jpg'
-import Flower7 from '../../../assets/images/pooja/kit7.jpg'
-import Flower8 from '../../../assets/images/pooja/kit8.jpg'
-import Flower9 from '../../../assets/images/pooja/kit9.jpg'
-import brass1 from '../../../assets/images/pooja/kalash.jpg'
-import brass2 from '../../../assets/images/pooja/bell.jpg'
-import brass3 from '../../../assets/images/pooja/kunkumthattu.jpg'
-import brass4 from '../../../assets/images/pooja/pooja.jpg'
-import brass5 from '../../../assets/images/pooja/thalika.jpg'
-import brass6 from '../../../assets/images/pooja/lota.png'
-import spiritual1 from '../../../assets/images/pooja/kungumam.jpg'
-import spiritual2 from '../../../assets/images/pooja/kottaipakku.jpg'
-import spiritual3 from '../../../assets/images/pooja/cow cake.jpg'
-import spiritual5 from '../../../assets/images/pooja/seeval.jpg'
-import spiritual6 from '../../../assets/images/pooja/kopparathengai.jpg'
-import spiritual7 from '../../../assets/images/pooja/vettiver.jpg'
-import spiritual8 from '../../../assets/images/pooja/viputhi.jpg'
-import spiritual9 from '../../../assets/images/pooja/omam kit.png'
-import harbel1 from '../../../assets/images/pooja/rosewater.jpg'
-import harbel2 from '../../../assets/images/pooja/sambrani.jpg'
-import harbel3 from '../../../assets/images/pooja/sandal.jpg'
-import harbel4 from '../../../assets/images/pooja/sandhanam.jpg'
-import harbel5 from '../../../assets/images/pooja/panchinool.jpg'
-import harbel6 from '../../../assets/images/pooja/sambrani1.png'
-import harbel7 from '../../../assets/images/pooja/kalasanool.jpg'
-import harbel8 from '../../../assets/images/pooja/karpuram.jpg'
-import harbel9 from '../../../assets/images/pooja/kattimanjal.jpg'
-import harbel10 from '../../../assets/images/pooja/nama katti.jpg'
-import harbel11 from '../../../assets/images/pooja/kashthurimanjal.jpg'
-import harbel12 from '../../../assets/images/pooja/navathaniyam.jpg'
-import natural1 from '../../../assets/images/pooja/arugampul.jpg'
-import natural2 from '../../../assets/images/pooja/nel.jpg'
-import natural3 from '../../../assets/images/pooja/mangostick.jpg'
-import natural4 from '../../../assets/images/pooja/pori.jpg'
-import natural5 from '../../../assets/images/pooja/arasankatta.jpg'
+import "owl.carousel/dist/assets/owl.theme.default.css"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import banner from '../../../assets/images/pooja/pooja-product-banner.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getData, postData } from '../../../WebService/API';
+import { toast } from 'react-toastify';
 
-interface PoojaItem {
+const userId = Number(localStorage.getItem('userId') || 0);
+
+interface poojaItems {
   id: number;
   name: string;
-  img: string;
-  path: string;
+  price: number;
+  full_image_url: string;
+  quantity?: number;
 }
-const images: PoojaItem[] = [
-  { id: 1, name: "Sudrashana Pooja", img: Flower1, path: "/pooja/sudrashana-pooja" },
-  { id: 2, name: "varalakshmi Pooja", img: Flower2, path: "/pooja/varalakshmi-pooja" },
-  { id: 3, name: "Shiva pooja", img: Flower3, path: "/pooja/shiva-pooja" },
-  { id: 4, name: "Satyanarayana pooja", img: Flower4, path: "/pooja/satyanarayana-pooja" },
-  { id: 5, name: "Haridarshan Pooja", img: Flower5, path: "/pooja/haridarshan-pooja" },
-  { id: 6, name: "Navgraha Pooja", img: Flower6, path: "/pooja/navgraha-pooja" },
-  { id: 7, name: "Ganapathi Pooja", img: Flower7, path: "/pooja/ganapathi-pooja" },
-  { id: 8, name: "108 Om Thiraviya", img: Flower8, path: "/pooja/108-om-thiraviya" },
-  { id: 9, name: "Durga Pooja", img: Flower9, path: "/pooja/durga-pooja" },
-];
-
-const garlands: PoojaItem[] = [
-  { id: 1, img: brass1, name: "Kalash", path: "/pooja/kalash" },
-  { id: 2, img: brass2, name: "Bell", path: "/pooja/bell" },
-  { id: 3, img: brass3, name: "kunkum Plate", path: "/pooja/kunkum-plate" },
-  { id: 4, img: brass4, name: "Agarbatti holder", path: "/pooja/agarbatti-holder" },
-  { id: 5, img: brass5, name: "Thalika", path: "/pooja/thalika" },
-  { id: 6, img: brass6, name: "Lota", path: "/pooja/lota" },
-];
-
-const petals: PoojaItem[] = [
-  { id: 1, img: spiritual1, name: "Kungumam", path: "/pooja/kungumam" },
-  { id: 2, img: spiritual2, name: "Kottai Pakku", path: "/pooja/kottai-pakku" },
-  { id: 3, img: spiritual3, name: "Cow Dung Cake", path: "/pooja/cow-dung-cake" },
-  { id: 4, img: spiritual5, name: "Sival Pakku", path: "/pooja/sival-pakku" },
-  { id: 5, img: spiritual6, name: "Koppara Thenga", path: "/pooja/koppara-thenga" },
-  { id: 6, img: spiritual7, name: "Vetti Ver", path: "/pooja/vetti-ver" },
-  { id: 7, img: spiritual8, name: "Vibuthi", path: "/pooja/vibuthi" },
-  { id: 8, img: spiritual9, name: "Omam Kit 108", path: "/pooja/omam-kit-108" },
-]
-
-const strings: PoojaItem[] = [
-  { id: 1, img: harbel1, name: "Paneer Water", path: "/pooja/paneer-water" },
-  { id: 2, img: harbel2, name: "Sambrani Powder", path: "/pooja/sambrani-powder" },
-  { id: 3, img: harbel3, name: "Sandhanam Powder", path: "/pooja/sandhanam-powder" },
-  { id: 4, img: harbel4, name: "Sandhanam Katti", path: "/pooja/sandhanam-katti" },
-  { id: 5, img: harbel5, name: "Panchi Nool", path: "/pooja/panchi-nool" },
-  { id: 6, img: harbel6, name: "Sambrani Cup", path: "/pooja/sambrani-cup" },
-  { id: 7, img: harbel7, name: "Kalasa Nool", path: "/pooja/kalasa-nool" },
-  { id: 8, img: harbel8, name: "Karpuram", path: "/pooja/karpuram" },
-  { id: 9, img: harbel9, name: "Katti Manjal", path: "/pooja/katti-manjal" },
-  { id: 10, img: harbel10, name: "Namaa Katti", path: "/pooja/namaa-katti" },
-  { id: 11, img: harbel11, name: "Kasthuri Manjal", path: "/pooja/kasthuri-manjal" },
-  { id: 12, img: harbel12, name: "Navathaniyam", path: "/pooja/navathaniyam" },
-]
-const natural: PoojaItem[] = [
-  { id: 1, img: natural1, name: "Grass", path: "/pooja/grass" },
-  { id: 2, img: natural2, name: "Nel", path: "/pooja/nel" },
-  { id: 3, img: natural3, name: "Mango Stick", path: "/pooja/mango-stick" },
-  { id: 4, img: natural4, name: "Nel Pori", path: "/pooja/nel-pori" },
-  { id: 5, img: natural5, name: "Arasan Kattai", path: "/pooja/arasan-kattai" },
-];
-
 
 const getSlidesPerView = (width: number) => {
   if (width >= 1280) return 4;
@@ -119,8 +30,8 @@ const getSlidesPerView = (width: number) => {
   return 1;
 };
 
-const getSlides = (arr: { img: string; name: string; path: string }[], perSlide: number) => {
-  let slides: { img: string; name: string; path: string }[][] = [];
+const getSlides = (arr: poojaItems[], perSlide: number) => {
+  let slides: poojaItems[][] = [];
   for (let i = 0; i < arr.length; i += perSlide) {
     let slide = arr.slice(i, i + perSlide);
 
@@ -137,6 +48,20 @@ const getSlides = (arr: { img: string; name: string; path: string }[], perSlide:
 const Pooja: React.FC = () => {
 
   const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView(window.innerWidth));
+  const [poojaKits, setPoojaKits] = useState<poojaItems[]>([]);
+  const [brassProducts, setBrassProducts] = useState<poojaItems[]>([]);
+  const [spiritual, setSpiritual] = useState<poojaItems[]>([]);
+  const [medicinal, setMedicinal] = useState<poojaItems[]>([]);
+  const [agricultural, setAgricultural] = useState<poojaItems[]>([]);
+  const [loading, setLoading] = useState({
+    poojaKits: true,
+    brassProducts: true,
+    spiritual: true,
+    medicinal: true,
+    agricultural: true,
+  });
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -144,18 +69,88 @@ const Pooja: React.FC = () => {
     };
 
     window.addEventListener("resize", handleResize);
+
+    // Fetch all flower data
+    const fetchPoojaData = async () => {
+      try {
+        const poojaKitResponse = await getData('poojaProducts/special-pooja-kit');
+        setPoojaKits(poojaKitResponse.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          full_image_url: item.full_image_url,
+          quantity: 1,
+        })));
+        setLoading(prev => ({ ...prev, flowerHeads: false }));
+
+        const brassProductsResponse = await getData('poojaProducts/brass-pooja-products');
+        setBrassProducts(brassProductsResponse.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          full_image_url: item.full_image_url,
+          quantity: 1,
+        })));
+        setLoading(prev => ({ ...prev, garlands: false }));
+
+        const spiritualProductResponse = await getData('poojaProducts/spiritual-and-religious');
+        setSpiritual(spiritualProductResponse.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          full_image_url: item.full_image_url,
+          quantity: 1,
+        })));
+        setLoading(prev => ({ ...prev, petals: false }));
+
+        // Fetch strings
+        const medicinalResponse = await getData('poojaProducts/medicinal-and-herbal');
+        setMedicinal(medicinalResponse.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          full_image_url: item.full_image_url,
+          quantity: 1,
+        })));
+        setLoading(prev => ({ ...prev, strings: false }));
+
+        const agriculturalResponse = await getData('poojaProducts/agriculture-and-natural');
+        setAgricultural(agriculturalResponse.data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          full_image_url: item.full_image_url,
+          quantity: 1,
+        })));
+        setLoading(prev => ({ ...prev, strings: false }));
+
+      } catch (err) {
+        setError("Failed to load flower data. Please try again later.");
+        setLoading({
+          poojaKits: false,
+          brassProducts: false,
+          spiritual: false,
+          medicinal: false,
+          agricultural: false,
+        });
+        console.error("Error fetching flower data:", err);
+      }
+    };
+
+    fetchPoojaData();
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const slides = getSlides(images, slidesPerView);
+  const poojaKitSlides = getSlides(poojaKits, slidesPerView);
 
-  const garSlides = getSlides(garlands, slidesPerView)
+  const brassSlides = getSlides(brassProducts, slidesPerView)
 
-  const petalSlides = getSlides(petals, slidesPerView)
+  const spiritualSlides = getSlides(spiritual, slidesPerView)
 
-  const stringSlides = getSlides(strings, slidesPerView)
+  const medicinalSlides = getSlides(medicinal, slidesPerView)
 
-  const naturalslide = getSlides(natural, slidesPerView)
+  const agriculturalSlides = getSlides(agricultural, slidesPerView)
 
 
   useEffect(() => {
@@ -164,6 +159,50 @@ const Pooja: React.FC = () => {
       easing: "ease-in-out", // Animation easing
     });
   }, []);
+
+  const handleAddToCart = async (data: poojaItems) => {
+    debugger
+    try {
+
+      if (!userId || userId === 0) {
+        toast.error("Please login to add items to cart");
+        navigate('/LoginRegister');
+        return;
+      }
+
+      const quantity = typeof data.quantity === 'number' && data.quantity > 0
+        ? data.quantity
+        : 1;
+
+      const itemToSend = {
+        userId,
+        productId: data.id,
+        name: data.name,
+        price: data.price,
+        quantity: quantity,
+        imageUrl: data.full_image_url
+      };
+
+      const response = await postData("cart/add-to-cart", itemToSend);
+      console.log("Response:", response)
+      toast.success("Product Added to Cart");
+    } catch (error) {
+      console.error("Add to Cart failed:", error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  if (error) {
+    return (
+      <>
+        <Header />
+        <div className="container-fluid py-5" style={{ marginTop: "102px" }}>
+          <div className="alert alert-danger">{error}</div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -212,22 +251,33 @@ const Pooja: React.FC = () => {
       <div className='bg-light p-5 rounded'>
         <h2 className='text-start mb-4' data-aos="fade-up">Special Pooja Kit</h2>
         <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
-          {slides.map((group, index) => (
+          {poojaKitSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
                 {group.map((data, i) => (
                   <Col key={i} xs={12} sm={6} md={3} id='columns'>
                     <div className="rounded p-2">
-                      <div className="card" style={{ height: 300 }}>
+                      <div className="card" style={{ height: 425 }}>
                         <img
-                          src={data.img}
+                          src={data.full_image_url}
                           className="img-fluid w-100 rounded"
                           alt={`Slide ${index * 4 + i + 1}`}
                           style={{
                             height: "243px"
                           }}
                         />
-                        <h5 className='py-3'><Link to={data.path}>{data.name}</Link></h5>
+                        <h5 className='py-3'><Link to={data.name}>{data.name}</Link></h5>
+                        <div className="justify-content-center">
+                          <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                          <a
+                            // href="#"
+                            className="btn border border-secondary rounded-pill px-3 text-primary"
+                            onClick={() => handleAddToCart(data)}
+                          >
+                            <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Col>
@@ -238,22 +288,33 @@ const Pooja: React.FC = () => {
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Brass Pooja Product</h2>
         <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
-          {garSlides.map((group, index) => (
+          {brassSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
                 {group.map((data, i) => (
                   <Col key={i} xs={12} sm={6} md={3} id='columns'>
                     <div className="rounded p-2">
-                      <div className="card" style={{ height: 300 }}>
+                      <div className="card" style={{ height: 425 }}>
                         <img
-                          src={data.img}
+                          src={data.full_image_url}
                           className="img-fluid w-100 rounded"
                           alt={`Slide ${index * 4 + i + 1}`}
                           style={{
                             height: "243px"
                           }}
                         />
-                        <h5 className='py-3'><Link to={data.path}>{data.name}</Link></h5>
+                        <h5 className='py-3'><Link to={data.name}>{data.name}</Link></h5>
+                        <div className="justify-content-center">
+                          <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                          <a
+                            // href="#"
+                            className="btn border border-secondary rounded-pill px-3 text-primary"
+                            onClick={() => handleAddToCart(data)}
+                          >
+                            <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Col>
@@ -264,22 +325,33 @@ const Pooja: React.FC = () => {
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Spiritual and Religious</h2>
         <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
-          {petalSlides.map((group, index) => (
+          {spiritualSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
                 {group.map((data, i) => (
                   <Col key={i} xs={12} sm={6} md={3} id='columns'>
                     <div className="rounded p-2">
-                      <div className="card" style={{ height: 300 }}>
+                      <div className="card" style={{ height: 425 }}>
                         <img
-                          src={data.img}
+                          src={data.full_image_url}
                           className="img-fluid w-100 rounded"
                           alt={`Slide ${index * 4 + i + 1}`}
                           style={{
                             height: "243px"
                           }}
                         />
-                        <h5 className='py-3'><Link to={data.path}>{data.name}</Link></h5>
+                        <h5 className='py-3'><Link to={data.name}>{data.name}</Link></h5>
+                        <div className="justify-content-center">
+                          <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                          <a
+                            // href="#"
+                            className="btn border border-secondary rounded-pill px-3 text-primary"
+                            onClick={() => handleAddToCart(data)}
+                          >
+                            <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Col>
@@ -290,22 +362,33 @@ const Pooja: React.FC = () => {
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Medicinal and Herbal</h2>
         <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
-          {stringSlides.map((group, index) => (
+          {medicinalSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
                 {group.map((data, i) => (
                   <Col key={i} xs={12} sm={6} md={3} id='columns'>
                     <div className="rounded p-2">
-                      <div className="card" style={{ height: 300 }}>
+                      <div className="card" style={{ height: 425 }}>
                         <img
-                          src={data.img}
+                          src={data.full_image_url}
                           className="img-fluid w-100 rounded"
                           alt={`Slide ${index * 4 + i + 1}`}
                           style={{
                             height: "243px"
                           }}
                         />
-                        <h5 className='py-3'><Link to={data.path}>{data.name}</Link></h5>
+                        <h5 className='py-3'><Link to={data.name}>{data.name}</Link></h5>
+                        <div className="justify-content-center">
+                          <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                          <a
+                            // href="#"
+                            className="btn border border-secondary rounded-pill px-3 text-primary"
+                            onClick={() => handleAddToCart(data)}
+                          >
+                            <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Col>
@@ -316,15 +399,15 @@ const Pooja: React.FC = () => {
         </Carousel>
         <h2 className='mt-5 mb-5' data-aos="fade-up">Agricultural and Natural</h2>
         <Carousel data-aos="fade-up" interval={null} id='slider-items' controls indicators={false} wrap={true}>
-          {naturalslide.map((group, index) => (
+          {agriculturalSlides.map((group, index) => (
             <Carousel.Item key={index}>
               <Row className="g-3">
                 {group.map((data, i) => (
                   <Col key={i} xs={12} sm={6} md={3} id='columns'>
                     <div className="rounded p-2">
-                      <div className="card" style={{ height: 300 }}>
+                      <div className="card" style={{ height: 425 }}>
                         <img
-                          src={data.img}
+                          src={data.full_image_url}
                           className="img-fluid w-100 rounded"
                           alt={`Slide ${index * 4 + i + 1}`}
                           style={{
@@ -332,8 +415,19 @@ const Pooja: React.FC = () => {
                           }}
                         />
                         <h5 className='py-3'>
-                          <Link to={data.path}>{data.name}</Link>
+                          <Link to={data.name}>{data.name}</Link>
                         </h5>
+                        <div className="justify-content-center">
+                          <p className="text-dark p-2 fs-5 fw-bold mb-0">${data.price}</p>
+                          <a
+                            // href="#"
+                            className="btn border border-secondary rounded-pill px-3 text-primary"
+                            onClick={() => handleAddToCart(data)}
+                          >
+                            <i className="fa fa-shopping-bag me-2 text-primary" />{" "}
+                            Add to cart
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </Col>
